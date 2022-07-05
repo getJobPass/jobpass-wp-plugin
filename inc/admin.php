@@ -20,10 +20,19 @@ function jobpass_config_page() {
 
 function jobpass_display_form() {
 	return '<div class="wrap">
+<div class="row jobpassHeader">
+		<div>
+			<h1><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000" fill="#0f0649" width="30px"><path d="M1225.2 1013.8c61.9 0 110-15.8 144.3-47.5s51.4-76.6 51.4-134.7v-1.4c0-59.1-17.1-104.2-51.4-135.4s-82.4-46.8-144.3-46.8h-145.4v1.7h-.3v364.1h.3 145.4 0zm441.5-537.3l-447-.1c72.4 0 194.2 14.8 248.5 44.1s96.6 70.4 126.8 123.2c30.2 52.9 45.4 114.8 45.4 185.7v1.4c0 70.5-15.1 132.2-45.4 185-30.3 52.9-72.5 93.9-126.8 123.2s-117.6 43.9-190 43.9h-198.6v323.7h587.2c48.1 0 87.1-39 87.1-87.1v-856c-.1-48-39.1-87-87.2-87zm-980.9 758.4c0 43.3-11.9 76.3-35.7 99s-58.3 34-103.6 34c-28.1 0-52-4.8-71.8-14.3s-35-22.9-45.7-40-16.8-36.8-18.2-59h0c-.4-1.9-2.1-3.2-4-3.2h-202c-2.2 0-4.1 1.8-4.1 4.1v.9c1.9 53.7 17 100.6 45.4 140.8 28.3 40.2 68.1 71.3 119.3 93.3 51.2 22.1 112.3 32.4 183.2 33.1 107 1 195.6-24.5 260.4-75.5 62.6-49.2 92.5-120.8 92.5-211.4v-56.6H685.7l.1 54.8h0zm0-758.4h215.8V1012H685.8z"/><path d="M1735.7 893l52.8-122.9c5-11.7 7.8-25.5 8-39.7l2.7-187.7c.4-30.8-15-56.2-34.2-56.1l-90.3.5-2.7 433.8h30.6c13.3-.1 25.6-10.5 33.1-27.9z" stroke="#0f0649" stroke-width="21.194" stroke-miterlimit="10"/></svg>
+			' . __( 'JobPass - Postuler partout, en 1 clic', 'jobpass' ) . '
+			</h1>
+		</div>
+		<div>
+		<a href="https://beta.jobpass.com" target="blank" class="jobpassBtn">
+			Accéder à JobPass
+		</a>
+	</div>
+	</div>
                 <div class="jobpassIntroduction">
-                	<h3><svg  width="30px" id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1713.076 1155.111"><defs><style>.cls-1{fill:#0f0649;}.cls-2{fill:none;}</style></defs><path class="cls-1" d="M1253.165,1015.2q102.429,0,159.181-52.4t56.738-148.541v-1.576q0-97.7-56.738-149.329-56.736-51.6-159.181-51.616H1092.783v1.9h-.373V1015.2h160.755Z" transform="translate(-123.133 -422.444)"/><path class="cls-1" d="M1740.113,422.61l-493.077-.166c79.849,0,214.168,16.32,274.055,48.628s106.506,77.621,139.874,135.933S1711,733.618,1711,811.889v1.577q0,116.634-50.039,204.1t-139.874,135.933q-89.831,48.465-209.613,48.464H1092.41V1559h647.7a96.1,96.1,0,0,0,96.1-96.095V518.705A96.1,96.1,0,0,0,1740.113,422.61Z" transform="translate(-123.133 -422.444)"/><path class="cls-1" d="M658.2,1259.1q0,71.716-39.4,109.21-39.417,37.5-114.264,37.5-46.506,0-79.194-15.789-32.714-15.789-50.434-44.079t-20.094-65.132l-.79-61.852H123.133v63.826q3.141,88.816,50.039,155.263,46.874,66.459,131.6,102.961c56.464,24.341,123.846,35.764,202.124,36.513,117.974,1.128,215.755-27.026,287.234-83.224,69.006-54.255,102.049-133.224,102.049-233.224v-62.443L658.2,1198.6Z" transform="translate(-123.133 -422.444)"/><rect class="cls-1" x="535.062" y="0.165" width="237.984" height="590.693"/><polygon class="cls-2" points="535.062 776.156 773.046 776.187 773.046 590.858 535.062 590.858 535.062 776.156"/></svg>
-                	' . __( 'JobPass - Postuler partout, en 1 clic', 'jobpass' ) . '
-                	</h3>
 	                <p>' . __( 'Vous trouverez toutes les informations pour configurer JobPass sur votre site WordPress sur votre espace recruteur', 'jobpass' ) . ' <a href="https://beta.jobpass.com/recruiter/" target="_blank">beta.jobpass.com</a>
                         <br />
                         ' . __( 'Ajoutez l\'ID de votre JobTag dans champs ci-dessous', 'jobpass' ) . '
@@ -37,7 +46,7 @@ function jobpass_display_form() {
                     <input type="hidden" name="updated" value="true" />
     			    ' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
                     <label>
-                        ' . __( 'JobTag ID', 'jobpass' ) . '
+                        ' . __( 'ID du récepteur', 'jobpass' ) . '
                         <br />
                         <input type="text" name="jobpassIdKey" value="' . get_option( 'jobpassIdKey' ) . '"/>
                     </label>
@@ -47,7 +56,13 @@ function jobpass_display_form() {
 			</form>
         </div>
 
-        <style type="text/css">
+        <style>
+
+				.wrap {
+					background-color: #fff;
+					border-radius: 8px;
+					padding: 3.3rem 2rem;
+				}
             .jobpassDiv,
             .jobpassIntroduction {
                 max-width: 100%;
@@ -57,36 +72,25 @@ function jobpass_display_form() {
             .jobpassDiv {
 
                 background: #FFF;
-                border: 1px solid #eee;
-                border-bottom: 2px solid #ddd;
-            }
+                border-radius: 8px ;
+								box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
 
+            }
             .jobpassIntroduction {
                 background: #EFF9FF;
-                border: 1px solid #0F0649;
                 border-radius: 8px;
-                margin: 25px 0;
+                margin: 0 0 25px 0;
                 font-size: 17px;
                 line-height: 25px;
             }
-
             .jobpassDiv label {
                 display: block;
                 margin: 0 0 20px;
             }
-
             .jobpassDiv input {
                 border: 1px solid #aaa;
                 background: #F7F7F7;
             }
-
-            .jobpassDiv input[type=text] {
-            }
-
-            .jobpassDiv input[type=submit] {
-                font-size: 18px;
-            }
-
             .jp_error, .jp_success {
                 margin: 10px 0px;
                 padding: 4px 20px;
@@ -94,28 +98,68 @@ function jobpass_display_form() {
                 border-left-width: 4px;
                 max-width: 100%;
             }
-
             .jp_error p, .jp_success p {
                 margin: 3px 0;
                 padding: 2px;
             }
-
             .jp_success {
                 color: #7FC03F;
                 background-color: #DFF2BF;
                 border-left-color: #7FC03F;
             }
-
             .jp_error {
                 color: #C03F3F;
                 background-color: #FFD2D2;
-
                 border-left-color: #C03F3F;
             }
-
-						h3 {
-							color: #0F0649
+						h1 {
+							color: #0F0649;
+							font-weight: 700;
 						}
+						.clear_blue {
+							color: #7BC6E8;
+						}
+
+						.row {
+							display:flex;
+						}
+
+						.jobpassHeader {
+							justify-content:space-between;
+							align-items:center;
+						}
+						.jobpassHeader h1 {
+							display:flex;
+							align-items:center;
+							font-weight: 700 !important;
+						}
+
+						.jobpassHeader h1 svg {
+							margin-right: 30px;
+						}
+
+						.jobpassBtn {
+							padding: 10px 20px;
+							background-color: #0F0649;
+							color: #fff;
+							font-weight: 700;
+							font-size: 16px;
+							border-radius: 8px;
+							text-decoration: none;
+						}
+
+						.jobpassBtn:hover: {
+							background-color: #7BC6E8;
+							color: #fff !important;
+							transition:0.5s all;
+							-webkit-transition:0.5s all;
+							-moz-transition:0.5s all;
+							-o-transition:0.5s all;
+						}
+						.jobpassHeader {
+							margin-bottom: 2rem;
+						}
+
         </style>
         '
         ;
@@ -137,13 +181,13 @@ function jobpass_handle_form() {
 
 			?>
 
-            <div class="jp_success updated">
+            <div class="notice notice-success is-dismissible">
                 <p><?php echo __( 'Vos paramètres ont été sauvegardés', 'jobpass' ); ?></p>
             </div>
 			<?php
 		} else {
 			?>
-            <div class="jp_error">
+            <div class="notice notice-error is-dismissible">
                 <p><?php echo __( 'Désolé, vos paramètres n\'ont pas pu être sauvegardés', 'jobpass' ); ?></p>
             </div>
 			<?php
