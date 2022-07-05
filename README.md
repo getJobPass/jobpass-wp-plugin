@@ -15,7 +15,7 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/jobpass/public/wordpress-plugin.git
+git remote add origin https://gitlab.com/jobpass/public/jobpass-wp-plugin.git
 git branch -M master
 git push -uf origin master
 ```
