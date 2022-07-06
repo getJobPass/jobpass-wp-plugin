@@ -93,3 +93,20 @@ function create_joboffers_taxonomy() {
     ));
 }
 add_action( 'init', 'create_joboffers_taxonomy', 0 );
+
+add_filter('single_template', 'joboffer_template');
+
+function joboffer_template($single) {
+
+    global $post;
+
+    /* Checks for single template by post type */
+    if ( $post->post_type == 'joboffers' ) {
+        if ( file_exists( JOBPASS_PATH . '/public/single-jobpass-offer.php' ) ) {
+            return JOBPASS_PATH . '/public/single-jobpass-offer.php';
+        }
+    }
+
+    return $single;
+
+}
