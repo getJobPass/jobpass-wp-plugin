@@ -121,7 +121,13 @@ function jobpass_display_form() {
 						}
 
 						.row {
-							display:flex;
+							-jp-gutter-x: 1.5rem;
+							-jp-gutter-y: 0;
+							display: flex;
+							flex-wrap: wrap;
+							margin-top: calc(var(-jp-gutter-y) * -1);
+							margin-right: calc(var(-jp-gutter-x) / -2);
+							margin-left: calc(var(-jp-gutter-x) / -2);
 						}
 
 						.jobpassHeader {
