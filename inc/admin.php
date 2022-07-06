@@ -27,7 +27,7 @@ function jobpass_display_form() {
 			</h1>
 		</div>
 		<div>
-		<a href="https://beta.jobpass.com" target="blank" class="jobpassBtn">
+		<a href="https://beta.jobpass.com" target="blank" class="button jobpassBtn">
 			Accéder à JobPass
 		</a>
 	</div>
@@ -139,22 +139,22 @@ function jobpass_display_form() {
 						}
 
 						.jobpassBtn {
-							padding: 10px 20px;
-							background-color: #0F0649;
-							color: #fff;
-							font-weight: 700;
-							font-size: 16px;
-							border-radius: 8px;
-							text-decoration: none;
+							padding: 10px 20px !important;
+							background-color: #0F0649 !important;
+							color: #fff !important;
+							font-weight: 700 !important;
+							font-size: 16px !important;
+							border-radius: 8px !important;
+							text-decoration: none !important;
 						}
 
 						.jobpassBtn:hover: {
-							background-color: #7BC6E8;
-							color: #fff !important;
-							transition:0.5s all;
-							-webkit-transition:0.5s all;
-							-moz-transition:0.5s all;
-							-o-transition:0.5s all;
+							background-color: #7BC6E8 !important;
+							color: #fff !important !important;
+							transition:0.5s all !important;
+							-webkit-transition:0.5s all !important;
+							-moz-transition:0.5s all !important;
+							-o-transition:0.5s all !important;
 						}
 						.jobpassHeader {
 							margin-bottom: 2rem;
