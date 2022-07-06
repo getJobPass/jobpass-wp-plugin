@@ -110,6 +110,9 @@ function joboffer_template($single) {
 }
 
 function add_css_file() {
-    ?><link rel="stylesheet" href="<?php echo esc_url( plugins_url( '/jobpass/public/assets/jobpass.css', dirname(__FILE__) ) ); ?>"/><?php
+    ?>
+    <link rel="stylesheet" href="<?php echo esc_url( plugins_url( '/jobpass/public/assets/jobpass.css', dirname(__FILE__) ) ); ?>"/>
+    <script src="https://kit.fontawesome.com/2fba8b9ac4.js" crossorigin="anonymous"></script>
+    <?php
  }
- add_action( 'your_hook_name', 'add_css_file' );
+ add_action( 'jobpass-style', 'add_css_file' );
