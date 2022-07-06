@@ -104,9 +104,12 @@ function joboffer_template($single) {
     if ( $post->post_type == 'joboffers' ) {
         if ( file_exists( JOBPASS_PATH . '/public/single-jobpass-offer.php' ) ) {
             return JOBPASS_PATH . '/public/single-jobpass-offer.php';
-        }
     }
-
-    return $single;
-
 }
+    return $single;
+}
+
+function add_css_file() {
+    ?><link rel="stylesheet" href="<?php echo esc_url( plugins_url( '/jobpass/public/assets/jobpass.css', dirname(__FILE__) ) ); ?>"/><?php
+ }
+ add_action( 'your_hook_name', 'add_css_file' );
