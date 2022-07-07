@@ -37,9 +37,9 @@ function joboffer_add_metadata() {
     $value = get_post_meta( $post->ID, '_my_meta_value_key', true );
     
     echo '<label for="joboffer_new_field">';
-    _e( 'Ville', 'joboffer_textdomain' );
+    _e( 'Lieu de l\'offre', 'joboffer_textdomain' );
     echo '</label> ';
-    echo '<input type="text" id="joboffer_new_field" name="joboffer_new_field" value="' . esc_attr( $value ) . '" size="25" />';
+    echo '<input type="text" id="joboffer_new_field" name="joboffer_new_field" value="' . esc_attr( $value ) . '" size="100" />';
     }
     
     /**
