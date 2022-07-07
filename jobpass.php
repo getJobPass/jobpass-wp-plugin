@@ -116,3 +116,5 @@ function add_css_file() {
     <?php
  }
  add_action( 'jobpass-style', 'add_css_file' );
+
+ include(__DIR__ . '/inc/joboffers-fields.php');
