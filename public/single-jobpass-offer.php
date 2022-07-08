@@ -17,6 +17,14 @@ get_header();
           <a href="#" ><span class="h6"><i class="fas fa-arrow-left"></i> Retour aux offres</span></a>
           <h1
           ><?php the_title() ?></h1>
+          <ul class="jp_offer-metas">
+    <li><i class="fas fa-map-marker"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_place', true ) ); ?></li>
+    <li><i class="fa fa-calendar-alt"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_startDate', true ) ); ?></li>
+    <li><i class="fa fa-briefcase"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?></li>
+    <li><i class="fa fa-briefcase"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_remote', true ) ); ?></li>
+    <li><i class="fa fa-euro-sign"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_salary', true ) ); ?></li>
+    <li><i class="fa fa-user-tie"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_experience', true ) ); ?></li>
+</ul>
       </div>
       <div class="col-md-4  text-center">
           <a href="#" class="btn btnJobPass btn-lg align-items-center" style="display:inline-flex; font-size:16px;">

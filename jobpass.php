@@ -32,7 +32,7 @@ function jobpass_add_script_wp_footer() {
     ?>
         <script type="text/javascript">
             var el = document.createElement('script');
-            el.setAttribute('src', 'https://cdn.jobpass.com/jobslick.js');
+            el.setAttribute('src', 'https://cdn.jobpass.com/script/jobtag.js');
             el.setAttribute('type', 'text/javascript');
             el.setAttribute('async', true);
             el.setAttribute('data-sid', '<?php echo get_option( "jobpassIdKey" ); ?>');
@@ -117,5 +117,5 @@ function add_css_file() {
  }
  add_action( 'jobpass-style', 'add_css_file' );
 
- include(__DIR__ . '/inc/joboffers-fields.php');
+ include(__DIR__ . '/inc/metajoboffers-fields.php');
  
