@@ -98,7 +98,11 @@ function jobpass_display_form() {
 			<label>
 				<span>Description de votre entreprise</span>
 				<br>
-				<input name="companyDescription" form="jobpass_options" type="text" rows="5" cols="10" value="' . get_option( 'companyDescription' ) . '" style="width: 100% !important;"></input>
+				<textarea name="companyDescription"  class="all-options" >
+				'.esc_textarea(get_option( 'companyDescription' ) ). '
+				</textarea>
+			</label>
+			<label>
 			</label>
 			<input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
 		</div>
@@ -254,10 +258,21 @@ function jobpass_handle_form() {
 			}
 		?>
 		<?php
-				if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['companyDescription'] ) ) {
+				if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['companyDescription']) ) {
 					update_option( 'companyName', sanitize_text_field( $_POST['companyName'] ) );
 					update_option('companyDescription',  sanitize_textarea_field($_POST['companyDescription']));
 				}
+
+		?>
+
+		<?php 
+				$content = '';
+				if (isset($_POST) && !empty($_POST)) {
+					if (isset($_POST['submit']) && $_POST['submit'] != '') {
+						$content=$_POST['mycustomeditor'];
+					}
+				}
+				$editor_id = 'mycustomeditor';
 		?>
 
             <div class="notice notice-success is-dismissible">
