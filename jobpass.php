@@ -111,7 +111,7 @@ function joboffer_template($single) {
 
 function add_css_file() {
     ?>
-    <link rel="stylesheet" href="<?php echo esc_url( plugins_url( '/jobpass/public/assets/jobpass.css', dirname(__FILE__) ) ); ?>"/>
+<link rel="stylesheet" href="<?php echo esc_url('/wp-content/plugins/jobpass/public/assets/jobpass.css' ); ?>"/>
     <script src="https://kit.fontawesome.com/2fba8b9ac4.js" crossorigin="anonymous"></script>
     <?php
  }
