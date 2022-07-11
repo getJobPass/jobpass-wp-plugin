@@ -41,8 +41,9 @@ function jobpass_display_form() {
                     </p>
                 </div>
 
-            <form method="post" action="">
+            <form method="post" action="" id="jobpass_options"  accept-charset="utf-8">
                 <div class="jobpassDiv">
+					<h2>Informations de connexion</h2>
                     <input type="hidden" name="updated" value="true" />
     			    ' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
                     <label>
@@ -50,12 +51,59 @@ function jobpass_display_form() {
                         <br />
                         <input type="text" name="jobpassIdKey" value="' . get_option( 'jobpassIdKey' ) . '"/>
                     </label>
-
+					<label>
+					' . __( 'Id de l\'entreprise', 'jobpass' ) . '
+					<br />
+					<input type="text" name="organisationId" value="' . get_option( 'organisationId' ) . '"/>
+				</label>
                     <input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
                 </div>
+				<div class="jobpassDiv">
+				<h2>
+					Design de vos offres d\'emploi
+				</h2>
+				<input type="hidden" name="updated" value="true" />
+				' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
+				<label>
+					<span class="mr-5">' . __( 'Couleur de fond', 'jobpass' ) . '</span>
+					
+					<input type="color" name="headerBackgroundColor" value="' . get_option( 'headerBackgroundColor' ) . '"/>
+				</label>
+				<label>
+					<span class="mr-5">' . __('Couleur du titre principal', 'jobpass' ) . ' </span>
+					
+					<input type="color" name="mainTitle" value="'. get_option( 'mainTitle' ) . '">
+				</label>
+				<label>
+					<span class="mr-5">' . __('Couleur des titres', 'jobpass' ) . ' </span>
+					
+					<input type="color" name="fontTitleColor" value="'. get_option( 'fontTitleColor' ) . '">
+				</label>
+				<label>
+					<span class="mr-5">' . __('Couleur des données de l\'offre', 'jobpass' ) . ' </span>
+					
+					<input type="color" name="jobOffersData" value="'. get_option( 'jobOffersData' ) . '">
+				</label>
+				<input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
+			</div>
+			<div class="jobpassDiv">
+			<h2>Présentation de l\'entreprise</h2>
+			<input type="hidden" name="updated" value="true" />
+			' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
+			<label>
+				<span>Nom de votre entreprise</span>
+				<br />
+				<input type="text" name="companyName" value="' . get_option( 'companyName' ) . '" /> 
+			</label>
+			<label>
+				<span>Description de votre entreprise</span>
+				<br>
+				<input name="companyDescription" form="jobpass_options" type="text" rows="5" cols="10" value="' . get_option( 'companyDescription' ) . '" style="width: 100% !important;"></input>
+			</label>
+			<input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
+		</div>
 			</form>
         </div>
-
         <style>
 
 				.wrap {
@@ -73,8 +121,8 @@ function jobpass_display_form() {
 
                 background: #FFF;
                 border-radius: 8px ;
-								box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
-
+				box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+				margin-bottom: 2rem;
             }
             .jobpassIntroduction {
                 background: #EFF9FF;
@@ -133,6 +181,10 @@ function jobpass_display_form() {
 						.jobpassHeader {
 							justify-content:space-between;
 							align-items:center;
+							position: sticky;
+							top: 30px;
+							padding: 20px 0; 
+							background-color: #fff;
 						}
 						.jobpassHeader h1 {
 							display:flex;
@@ -166,6 +218,12 @@ function jobpass_display_form() {
 							margin-bottom: 2rem;
 						}
 
+						.mr-5 {
+							margin-right: 3rem;
+							min-width:300px;
+							display:inline-flex;
+						}
+
         </style>
         '
         ;
@@ -182,10 +240,25 @@ function jobpass_handle_form() {
 		exit;
 	} else {
 		// Handle our form data
-		if ( isset( $_POST['jobpassIdKey'] ) ) {
+		if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['organisationId'] ) && isset($_POST['headerBackgroundColor']) && isset($_POST['fontTitleColor']) ) {
 			update_option( 'jobpassIdKey', sanitize_text_field( $_POST['jobpassIdKey'] ) );
-
+			update_option('organisationId', sanitize_text_field( $_POST['organisationId']));
 			?>
+
+		<?php 
+			if( isset($_POST['headerBackgroundColor']) && isset($_POST['fontTitleColor'])) {
+				update_option('headerBackgroundColor', $_POST['headerBackgroundColor']);
+				update_option('fontTitleColor', $_POST['fontTitleColor']);
+				update_option('mainTitle', $_POST['mainTitle']);
+				update_option('jobOffersData', $_POST['jobOffersData']);
+			}
+		?>
+		<?php
+				if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['companyDescription'] ) ) {
+					update_option( 'companyName', sanitize_text_field( $_POST['companyName'] ) );
+					update_option('companyDescription',  sanitize_textarea_field($_POST['companyDescription']));
+				}
+		?>
 
             <div class="notice notice-success is-dismissible">
                 <p><?php echo __( 'Vos paramètres ont été sauvegardés', 'jobpass' ); ?></p>
@@ -200,7 +273,6 @@ function jobpass_handle_form() {
 		}
 	}
 }
-
 
 add_filter('plugin_action_links', 'wptuts_plugin_settings_link', 10, 2);
 function wptuts_plugin_settings_link($links, $file) {
