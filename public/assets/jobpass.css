@@ -74,6 +74,17 @@
   padding-left: 15px;
 }
 
+.card {
+  padding:3rem 20px;
+  background-color: #fff;
+  border-radius: 9px;
+  height: 100%;
+}
+
+.job_offers_list .col-md-4 {
+  margin-bottom: 2.8rem
+}
+
 .jobpass-content {
   background-color: #fff;
 }
@@ -189,6 +200,9 @@ header.bg-light {
     flex: 0 0 83.333333%;
     max-width: 83.333333%;
   }
+  .col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
 }
 @media (min-width: 992px) {
   .container {
