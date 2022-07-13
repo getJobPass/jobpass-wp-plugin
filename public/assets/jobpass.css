@@ -79,6 +79,7 @@
   background-color: #fff;
   border-radius: 9px;
   height: 100%;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
 }
 
 .job_offers_list .col-md-4 {
@@ -163,7 +164,7 @@ a.btnJobPass:hover {
   font-weight: 600;
 }
 
-header.bg-light {
+.jobpass-content header {
   background-color: #eff9ff;
   padding: 6rem 0;
 }
