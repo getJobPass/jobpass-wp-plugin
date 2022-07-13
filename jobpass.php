@@ -66,34 +66,34 @@ function joboffers_post_type() {
 			'supports' => array('title', 'editor', 'thumbnail'),
 			'has_archive' => true,
             'rewrite' => array('slug' => 'recrutement'),
-			'menu_position' => 5,
-
+			'show_in_menu' => false
+            
 		)
 	);
 }
 add_action('init', 'joboffers_post_type');
 
-function create_joboffers_taxonomy() {
-    register_taxonomy('categorie','joboffers',array(
-        'hierarchical' => false,
-        'labels' => array(
-            'name' => _x( 'Catégories', 'taxonomy general name' ),
-            'singular_name' => _x( 'Catégorie', 'taxonomy singular name' ),
-            'menu_name' => __( 'Catégories' ),
-            'all_items' => __( 'Toutes les catégories' ),
-            'edit_item' => __( 'Modifier les catégories' ),
-            'update_item' => __( 'Mettre à jour les catégories' ),
-            'add_new_item' => __( 'Ajouter des catégories' ),
-            'new_item_name' => __( 'Nouvelle catégorie' ),
-        ),
-    'show_ui' => true,
-    'show_in_rest' => true,
-    'show_admin_column' => true,
-    'rewrite' => array('slug' => 'recrutement/categorie'),
+// function create_joboffers_taxonomy() {
+//     register_taxonomy('categorie','joboffers',array(
+//         'hierarchical' => false,
+//         'labels' => array(
+//             'name' => _x( 'Catégories', 'taxonomy general name' ),
+//             'singular_name' => _x( 'Catégorie', 'taxonomy singular name' ),
+//             'menu_name' => __( 'Catégories' ),
+//             'all_items' => __( 'Toutes les catégories' ),
+//             'edit_item' => __( 'Modifier les catégories' ),
+//             'update_item' => __( 'Mettre à jour les catégories' ),
+//             'add_new_item' => __( 'Ajouter des catégories' ),
+//             'new_item_name' => __( 'Nouvelle catégorie' ),
+//         ),
+//     'show_ui' => true,
+//     'show_in_rest' => true,
+//     'show_admin_column' => true,
+//     'rewrite' => array('slug' => 'recrutement/categorie'),
 
-    ));
-}
-add_action( 'init', 'create_joboffers_taxonomy', 0 );
+//     ));
+// }
+// add_action( 'init', 'create_joboffers_taxonomy', 0 );
 
 add_filter('single_template', 'joboffer_template');
 
@@ -147,29 +147,4 @@ function joboffers_archive( $template ) {
     }
   }
   return $template;
-}
-
-add_filter('template_include', 'joboffers_categories', 100);
-
-function joboffers_categories( $job_category ) {
-    global $post;
-    $jobs = array_keys( get_object_taxonomies( 'joboffers', 'objects' ) );
-    $jobs_categories = get_terms(
-     [ 
-       'taxonomy' => $jobs, 
-       'hide_empty' => true,
-     ]
-    );
-
-  if (  $jobs_categories ) {
-    $theme_files = array('categories-joboffers.php', 'jobpass/joboffers-categories.php');
-    $exists_in_theme = locate_template($theme_files, false);
-    
-    if ( $exists_in_theme != '' ) {
-      return $exists_in_theme;
-    } else {
-      return JOBPASS_PATH . '/public/categories-joboffers.php';
-    }
-  }
-  return $job_category;
 }

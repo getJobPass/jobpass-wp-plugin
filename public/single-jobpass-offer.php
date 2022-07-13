@@ -28,7 +28,7 @@ add_action('wp_footer', 'get_organisation_id');
   <div class="container">
     <div class="row justify-content-center align-items-center py-5 ">
       <div class="col-md-8">
-          <a href="#" ><span class="h6"><i class="fas fa-arrow-left"></i> Retour aux offres</span></a>
+          <a href="/recrutement" ><span class="h6"><i class="fas fa-arrow-left"></i> Retour aux offres</span></a>
           <h1
           ><?php the_title(); ?></h1>
           <ul class="jp_offer-metas">

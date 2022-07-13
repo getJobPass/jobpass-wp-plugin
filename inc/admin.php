@@ -9,8 +9,26 @@ function jobpass_settings() {
 		'manage_options',
 		"jobpass",
 		'jobpass_config_page', 
-		plugin_dir_url( __FILE__ ) . 'images/icone-jobpass_square.jpg'
+		plugin_dir_url( __FILE__ ) . 'images/icone-jobpass_square.jpg',
+		5,
 	);
+
+	add_submenu_page(
+        'jobpass',
+        'Toutes les offres', //page title
+        'Toutes les offres d\'emploi', //menu title
+        'manage_options', //capability,
+        'edit.php?post_type=joboffers',//menu slug
+        
+    );
+	add_submenu_page(
+        'jobpass',
+        'Ajouter une offre', //page title
+        'Ajouter une offre d\'emploi', //menu title
+        'manage_options', //capability,
+        'post-new.php?post_type=joboffers',//menu slug
+        
+    );
 }
 
 function jobpass_config_page() {
