@@ -148,3 +148,28 @@ function joboffers_archive( $template ) {
   }
   return $template;
 }
+
+add_filter('template_include', 'joboffers_categories', 100);
+
+function joboffers_categories( $job_category ) {
+    global $post;
+    $jobs = array_keys( get_object_taxonomies( 'joboffers', 'objects' ) );
+    $jobs_categories = get_terms(
+     [ 
+       'taxonomy' => $jobs, 
+       'hide_empty' => true,
+     ]
+    );
+
+  if (  $jobs_categories ) {
+    $theme_files = array('categories-joboffers.php', 'jobpass/joboffers-categories.php');
+    $exists_in_theme = locate_template($theme_files, false);
+    
+    if ( $exists_in_theme != '' ) {
+      return $exists_in_theme;
+    } else {
+      return JOBPASS_PATH . '/public/categories-joboffers.php';
+    }
+  }
+  return $job_category;
+}
