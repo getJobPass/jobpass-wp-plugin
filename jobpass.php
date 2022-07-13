@@ -49,7 +49,6 @@ function jobpass_add_script_wp_footer() {
 	    <?php
     }
 }
-
 function joboffers_post_type() {
 	register_post_type( 'joboffers',
 		array(
@@ -66,8 +65,8 @@ function joboffers_post_type() {
 			'show_in_rest' => true,
 			'supports' => array('title', 'editor', 'thumbnail'),
 			'has_archive' => true,
-			'rewrite' => array( 'slug' => 'offres-emploi'),
-				'menu_position' => 5,
+            'rewrite' => array('slug' => 'recrutement'),
+			'menu_position' => 5,
 
 		)
 	);
@@ -75,7 +74,7 @@ function joboffers_post_type() {
 add_action('init', 'joboffers_post_type');
 
 function create_joboffers_taxonomy() {
-    register_taxonomy('categories','joboffers',array(
+    register_taxonomy('categorie','joboffers',array(
         'hierarchical' => false,
         'labels' => array(
             'name' => _x( 'Catégories', 'taxonomy general name' ),
@@ -90,11 +89,25 @@ function create_joboffers_taxonomy() {
     'show_ui' => true,
     'show_in_rest' => true,
     'show_admin_column' => true,
+    'rewrite' => array('slug' => 'recrutement/categorie'),
+
     ));
 }
 add_action( 'init', 'create_joboffers_taxonomy', 0 );
 
 add_filter('single_template', 'joboffer_template');
+
+// function wpa_course_post_link( $post_link, $id = 0 ){
+//     $post = get_post($id);  
+//     if ( is_object( $post ) ){
+//         $terms = wp_get_object_terms( $post->ID, 'joboffers' );
+//         if( $terms ){
+//             return str_replace( '%recrutement%' , $terms[0]->slug , $post_link );
+//         }
+//     }
+//     return $post_link;  
+// }
+// add_filter( 'post_type_link', 'wpa_course_post_link', 10, 3 );
 
 function joboffer_template($single) {
 
@@ -109,6 +122,7 @@ function joboffer_template($single) {
     return $single;
 }
 
+
 function add_css_file() {
     ?>
 <link rel="stylesheet" href="<?php echo esc_url('/wp-content/plugins/jobpass/public/assets/jobpass.css' ); ?>"/>
@@ -119,3 +133,18 @@ function add_css_file() {
 
  include(__DIR__ . '/inc/metajoboffers-fields.php');
 
+
+ add_filter('template_include', 'joboffers_archive', 100);
+
+function joboffers_archive( $template ) {
+  if ( is_post_type_archive('joboffers') ) {
+    $theme_files = array('archives-joboffers.php', 'jobpass/joboffers-archive.php');
+    $exists_in_theme = locate_template($theme_files, false);
+    if ( $exists_in_theme != '' ) {
+      return $exists_in_theme;
+    } else {
+      return JOBPASS_PATH . '/public/archives-joboffers.php';
+    }
+  }
+  return $template;
+}
