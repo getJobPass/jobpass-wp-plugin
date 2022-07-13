@@ -58,6 +58,12 @@ function jobpass_display_form() {
 					<br />
 					<input type="text" name="organisationId" value="' . get_option( 'organisationId' ) . '"/>
 				</label>
+				<label>
+						Autoriser les candidatures spontanées ?
+						<br />
+						<input size="76" name="spontaneousApplication" type="checkbox" id="spontaneousApplication" ' . checked( esc_attr(get_option("spontaneousApplication")), 1) .' value="1" />
+						
+				</label>
                     <input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
                 </div>
 				<div class="jobpassDiv">
@@ -100,8 +106,8 @@ function jobpass_display_form() {
 			<label>
 				<span>Description de votre entreprise</span>
 				<br>
-				<textarea name="companyDescription"  class="all-options" >
-				'.esc_textarea(get_option( 'companyDescription' ) ). '
+				<textarea name="companyDescription"  class="all-options" style="width: 100%" rows="5" >
+				'. get_option( 'companyDescription' ) .  '
 				</textarea>
 			</label>
 			<label>
@@ -264,7 +270,12 @@ function jobpass_handle_form() {
 					update_option( 'companyName', sanitize_text_field( $_POST['companyName'] ) );
 					update_option('companyDescription',  sanitize_textarea_field($_POST['companyDescription']));
 				}
+		?>
 
+		<?php 
+			$allowSpontaneous = $_POST['spontaneousApplication'] ? $_POST['spontaneousApplication'] : '';
+			update_option('spontaneousApplication',esc_html($allowSpontaneous ));
+			
 		?>
 
 		<?php 
