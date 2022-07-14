@@ -19,6 +19,13 @@
             value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_place', true ) ); ?>">
     </p>
     <p class="meta-options hcf_field">
+        <label for="jp_completeAddress">Adresse complete</label>
+        <input id="jp_completeAddress"
+            type="text"
+            name="jp_completeAddress"
+            value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_completeAddress', true ) ); ?>">
+    </p>
+    <p class="meta-options hcf_field">
         <label for="jp_startDate">Date de début</label>
         <input id="jp_startDate"
             type="date"
@@ -26,18 +33,18 @@
            value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_startDate', true ) ); ?>">
     </p>
     <p class="meta-options hcf_field">
+        <label for="jp_validThrough">Date de fin de validité</label>
+        <input id="jp_validThrough"
+            type="date"
+            name="jp_validThrough"
+           value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_validThrough', true ) ); ?>">
+    </p>
+    <p class="meta-options hcf_field">
         <label for="jp_contract">Type de contrat</label>
         <input id="jp_contract"
             type="text"
             name="jp_contract"
             value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?>">
-    </p>
-    <p class="meta-options hcf_field">
-        <label for="jp_remote">Télétravail</label>
-        <input id="jp_remote"
-            type="text"
-            name="jp_remote"
-            value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_remote', true ) ); ?>">
     </p>
     <p class="meta-options hcf_field">
         <label for="jp_remote">Télétravail</label>

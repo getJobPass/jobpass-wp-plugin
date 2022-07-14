@@ -12,6 +12,9 @@ get_header();
 $jp_start_date = get_post_meta($post -> ID, 'jp_startDate', true);
 $formatted_date = strtotime($jp_start_date);
 
+$jp_validTrough = get_post_meta($post -> ID, 'jp_validTrough', true);
+$formatted_validTrough = strtotime($formatted_validTrough); 
+
 function get_organisation_id() {
   if (get_option( 'organisationId' )) {
       $orgnisationId = get_option( 'organisationId' );
@@ -83,6 +86,49 @@ add_action('wp_footer', 'get_organisation_id');
       color: <?php echo get_option('jobOffersData') ?> !important;
     }
 </style>
+<script type="application/ld+json">
+    {
+      "@context" : "https://schema.org/",
+      "@type" : "JobPosting",
+      "title" : "<?php the_title() ?>",
+      "description" : "<?php the_content() ?>",
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "<?php echo get_option('companyName') ?>",
+        "value": "<?php the_ID() ?>"
+      },
+      "datePosted" : "<?php echo get_the_date('Y/m/d g:ia') ?>",
+      "validThrough" : " <?php echo date('Y-m-dTg:i', $formatted_validTrough) ?>",
+      "employmentType" : "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?>",
+      "hiringOrganization" : {
+        "@type" : "Organization",
+        "name" : "<?php echo get_option('companyName') ?>",
+        "sameAs" : "<?php echo get_site_url() ?>",
+        "logo" : "<?php echo get_custom_logo(); ?>"
+      },
+      "jobLocation": {
+      "@type": "Place",
+        "address": {
+        "@type": "City",
+        "streetAddress": "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_completeAddress', true ) ); ?>",
+        "addressLocality": "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_place', true ) ); ?>",
+        "addressRegion": "",
+        "postalCode": "",
+        "addressCountry": "FR"
+        }
+      },
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "EUR",
+        "value": {
+          "@type": "QuantitativeValue",
+          "value": <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_salary', true ) ); ?>,
+          "unitText": "MONTH"
+        }
+      }
+    }
+  </script>
+    
 <?
   get_footer();
 ?>

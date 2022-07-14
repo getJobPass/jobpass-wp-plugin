@@ -29,7 +29,9 @@ function hcf_save_meta_box( $post_id ) {
     }
     $fields = [
         'jp_place',
+        'jp_completeAddress',
         'jp_startDate',
+        'jp_validThrough',
         'jp_contract',
         'jp_remote',
         'jp_salary', 
