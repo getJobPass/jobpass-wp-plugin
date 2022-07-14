@@ -11,9 +11,25 @@ do_action('jobpass-style');
  <header style="background-color: <?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>" >
     <div class="container">
         <div class="row">
-                <div class="col-md-12">
+            <div class="col-md-12">
                 <h1 class="text-center"><?php post_type_archive_title(); ?></h1>
+            </div>
+            <div class="col-md-12" style="margin-top: 3rem">
+                <div>   
+                    <form role="search" action="<?php echo site_url('/'); ?>" method="get" id="searchform">
+                    <div class="row align-items-center justify-content-center">
+                    <div class="col-md-8">
+                        <input type="text" name="s" placeholder="Rechercher une offre d'emploi"/>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="hidden" name="post_type" value="joboffers" /> <!-- // hidden 'products' value -->
+                        <input type="submit" alt="Search" value="Rechercher" class="btn btn-search"/>
+                    </div>
+                    </div>
+                    </form>
                 </div>
+            </div>
+                
         </div>
     </div>
 </header>
@@ -109,6 +125,13 @@ do_action('jobpass-style');
     .card h3 {
         margin-top: 0;
         margin-bottom: 0;
+    }
+
+    .btn-search {
+        background-color: <?php echo get_option('mainTitle')?> !important;
+        border-radius: 8px !important;
+        padding: 10px 20px !important; 
+
     }
 </style>
 <?php get_footer(); ?>
