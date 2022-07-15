@@ -27,7 +27,7 @@ add_action('wp_footer', 'get_organisation_id');
 
  ?>
 <div class="jobpass-content">
-<header style="background:<?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>">
+<header style="background:<?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>; margin-bottom: 30px;">
   <div class="container">
     <div class="row justify-content-center align-items-center py-5 ">
       <div class="col-md-8">

@@ -8,7 +8,7 @@ do_action('jobpass-style');
  get_header(); 
  ?> 
 <div class="jobpass-content">
- <header style="background-color: <?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>" >
+ <header style="background-color: <?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>; margin-bottom: 30px;" >
     <div class="container">
         <div class="row">
             <div class="col-md-12">
