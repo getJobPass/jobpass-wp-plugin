@@ -26,6 +26,12 @@ if ( is_admin() ) {
 	require_once __DIR__ . '/inc/admin.php';
 }
 
+function rewrite_hiring_space() {
+
+  return flush_rewrite_rules();
+  }
+  add_action('init', 'rewrite_hiring_space');
+
 /* Inline script printed out in the footer */
 add_action('wp_footer', 'jobpass_add_script_wp_footer');
 function jobpass_add_script_wp_footer() {
