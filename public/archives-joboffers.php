@@ -92,7 +92,7 @@ do_action('jobpass-style');
         margin: 0 auto;
       "
       ><img
-        src="https://images.ctfassets.net/nla4ils4bv6t/3DPp2kmT56jDoMGQ1GRhOU/9088dea97ddcd7d7b89f232333153329/icone-white.svg"
+        src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/jobpass-icon.svg' )?>"
         style="width: 40px; margin-right: 20px"
       />Postuler avec JobPass</a>
             </div>
