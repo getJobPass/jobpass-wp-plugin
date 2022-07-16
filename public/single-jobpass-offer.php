@@ -48,6 +48,7 @@ add_action('wp_footer', 'get_organisation_id');
               echo esc_attr( 'https://jobpass.live/' . get_option('organisationId'));}  ?>" 
           class="btn btnJobPass btn-lg align-items-center"  
           style="display:inline-flex; font-size:16px;"
+          target="_blank"
           data-sid="<?php if(get_option('jobpassIdKey') ) { echo esc_attr(get_option('jobpassIdKey'));} ?>"
           >
         <img src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/jobpass-icon.svg' )?>" width="30px" style="margin-right:5px" />
