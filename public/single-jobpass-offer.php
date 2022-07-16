@@ -62,7 +62,9 @@ add_action('wp_footer', 'get_organisation_id');
     <div class="row justify-content-center">
         <div class="col-md-8">
             <?php the_content()?>
+            <?php  if(get_option('allowCredits')){?>
             <small>Powered by <a href="https://jobpass.com" target="_blank">JobPass</a></small>
+            <?php }?>
         </div>
         <div class="col-md-4">
             <h3>À propos de <?php echo get_option('companyName');?></h3>

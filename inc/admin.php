@@ -88,7 +88,14 @@ function jobpass_display_form() {
 				<textarea name="spontaneousDescription"  class="all-options" style="width: 100%" rows="5" >
 				'. get_option( 'spontaneousDescription' ) .  '
 				</textarea>
+
 			</label>
+			<label>
+						Activer les crédits ?
+						<br />
+						<input size="76" name="allowCredits" type="checkbox" id="allowCredits" ' . checked( esc_attr(get_option("allowCredits")), 1) .' value="1" />
+						
+				</label>
                     <input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
                 </div>
 				<div class="jobpassDiv">
@@ -308,6 +315,9 @@ function jobpass_handle_form() {
 		<?php 
 			$allowSpontaneous = $_POST['spontaneousApplication'] ? $_POST['spontaneousApplication'] : '';
 			update_option('spontaneousApplication',esc_html($allowSpontaneous ));
+
+			$allowCredits = $_POST['allowCredits'] ? $_POST['allowCredits'] : '';
+			update_option('allowCredits',esc_html($allowCredits))
 			
 		?>
 
