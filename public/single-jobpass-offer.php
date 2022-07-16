@@ -87,12 +87,18 @@ add_action('wp_footer', 'get_organisation_id');
       color: <?php echo get_option('jobOffersData') ?> !important;
     }
 </style>
+<?php 
+	$content= get_the_content(); 
+	$logo = get_theme_mod( 'custom_logo' );
+	$image = wp_get_attachment_image_src( $logo, 'full' );
+?>
+
 <script type="application/ld+json">
     {
       "@context" : "https://schema.org/",
       "@type" : "JobPosting",
       "title" : "<?php the_title() ?>",
-      "description" : "<?php the_content() ?>",
+      "description" : "<?php echo wp_strip_all_tags( $content )?>",
       "identifier": {
         "@type": "PropertyValue",
         "name": "<?php echo get_option('companyName') ?>",
@@ -105,7 +111,7 @@ add_action('wp_footer', 'get_organisation_id');
         "@type" : "Organization",
         "name" : "<?php echo get_option('companyName') ?>",
         "sameAs" : "<?php echo get_site_url() ?>",
-        "logo" : "<?php echo get_custom_logo(); ?>"
+        "logo" : "<?php echo $image[0] ?>"
       },
       "jobLocation": {
       "@type": "Place",
