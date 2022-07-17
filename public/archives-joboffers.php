@@ -15,13 +15,13 @@ do_action('jobpass-style');
                 <h1 class="text-center"><?php post_type_archive_title(); ?></h1>
             </div>
             <div class="col-md-12" style="margin-top: 3rem">
-                <div>   
+                <div style="display:block; margin:0 auto;" >
                     <form role="search" action="<?php echo site_url('/'); ?>" method="get" id="searchform">
-                    <div class="row align-items-center justify-content-center">
+                    <div class="row align-items-center justify-content-center" style="margin: 0 auto;">
                     <div class="col-md-8">
                         <input type="text" name="s" placeholder="Rechercher une offre d'emploi" class="search-input"/>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <input type="hidden" name="post_type" value="joboffers" /> <!-- // hidden 'products' value -->
                         <input type="submit" alt="Search" value="Rechercher" class="btn btn-search"/>
                     </div>
@@ -62,7 +62,7 @@ do_action('jobpass-style');
         endif; ?>
         </div>
 </section>
-<section style="margin-bottom:30px">
+<section style="margin-bottom:30px; padding-bottom: 30px">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -94,7 +94,7 @@ do_action('jobpass-style');
       ><img
         src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/jobpass-icon.svg' )?>"
         style="width: 40px; margin-right: 20px"
-      />Postuler avec JobPass</a>
+      />Déposer avec JobPass</a>
             </div>
         </div>
     </div>
@@ -131,6 +131,7 @@ do_action('jobpass-style');
         background-color: <?php echo get_option('mainTitle')?> !important;
         border-radius: 8px !important;
         padding: 10px 20px !important; 
+        width: 100%;
 
     }
 </style>

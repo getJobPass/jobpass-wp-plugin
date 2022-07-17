@@ -298,24 +298,35 @@ a.btnJobPass:hover {
       padding-right: 18px;
     }
   }
-
-  .jp_offer-metas {
-    color: var(--text-color);
-    display: flex;
-    margin-left: 0;
-    list-style: none;
-  }
-
-  .jp_offer-metas li {
-    margin-left: 0;
-    margin-right: 1.5rem;
-    font-size: 1rem;
-  }
-  .jp_offer-metas li i {
-    margin-right: 2px;
-  }
 }
 
 .search-input {
   width: 100%;
+  min-height: 50px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+}
+.search-input:focus,
+.search-input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.jp_offer-metas {
+  color: var(--text-color);
+  display: flex;
+  margin-left: 0;
+  list-style: none;
+  padding-left: 0;
+  padding-inline-start: 0;
+}
+
+.jp_offer-metas li {
+  margin-left: 0;
+  margin-right: 1.5rem;
+  font-size: 1rem;
+}
+.jp_offer-metas li i {
+  margin-right: 2px;
 }

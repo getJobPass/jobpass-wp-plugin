@@ -10,7 +10,7 @@
   License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
-defined( 'ABSPATH' ) or die( 'Hack me not' );
+defined( 'ABSPATH' ) or die();
 
 define( 'JOBPASS_FILE'            	, __FILE__ );
 define( 'JOBPASS_PATH'       		, realpath( plugin_dir_path( JOBPASS_FILE ) ) . '/' );
