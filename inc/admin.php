@@ -85,9 +85,7 @@ function jobpass_display_form() {
 				<label>
 				<span>Description candidature spontanée</span>
 				<br>
-				<textarea name="spontaneousDescription"  class="all-options" style="width: 100%" rows="5" >
-				'. get_option( 'spontaneousDescription' ) .  '
-				</textarea>
+				<textarea name="spontaneousDescription"  class="all-options" style="width: 100%" rows="5" >'. stripslashes(get_option( 'spontaneousDescription' )) .  '</textarea>
 
 			</label>
 			<label>
@@ -138,9 +136,7 @@ function jobpass_display_form() {
 			<label>
 				<span>Description de votre entreprise</span>
 				<br>
-				<textarea name="companyDescription"  class="all-options" style="width: 100%" rows="5" >
-				'. get_option( 'companyDescription' ) .  '
-				</textarea>
+				<textarea name="companyDescription"  class="all-options" style="width: 100%" rows="5" >'.stripslashes(get_option( 'companyDescription' )) .'</textarea>
 			</label>
 			<label>
 			</label>

@@ -62,14 +62,14 @@ do_action('jobpass-style');
         endif; ?>
         </div>
 </section>
-<section>
+<section style="margin-bottom:30px">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
         <?php
   if(get_option('spontaneousApplication')){?>
         <h2 class="text-center">Candidature spontanée</h2>
-        <p class="text-center"><?php echo get_option('spontaneousDescription');?></p>
+        <p class="text-center"><?php echo stripslashes(get_option('spontaneousDescription'));?></p>
   <?php } ?>
         </div>
         </div>

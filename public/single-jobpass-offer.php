@@ -27,7 +27,7 @@ add_action('wp_footer', 'get_organisation_id');
 
  ?>
 <div class="jobpass-content">
-<header style="background:<?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>; margin-bottom: 30px;">
+<header style="background:<?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>;" class="offer_header">
   <div class="container">
     <div class="row justify-content-center align-items-center py-5 ">
       <div class="col-md-8">
@@ -57,7 +57,7 @@ add_action('wp_footer', 'get_organisation_id');
     </div>
   </div>
 </header>
-<section id="jp_content-offer">
+<section id="jp_content-offer" style="margin: 30px 0;">
   <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -66,13 +66,14 @@ add_action('wp_footer', 'get_organisation_id');
             <small>Powered by <a href="https://jobpass.com" target="_blank">JobPass</a></small>
             <?php }?>
         </div>
-        <div class="col-md-4">
+        <aside class="col-md-4 jp-company">
+          <div class="card" style="max-height: 100%; height: auto ">
             <h3>À propos de <?php echo get_option('companyName');?></h3>
             <p>
-              <?php echo get_option('companyDescription');?>
+              <?php echo stripslashes(get_option('companyDescription'));?>
             </p>
-            
-        </div>
+            </div>
+        </aside>
     </div>
   </div>
 </section>
@@ -137,7 +138,7 @@ add_action('wp_footer', 'get_organisation_id');
       }
     }
   </script>
-    
+  
 <?
   get_footer();
 ?>
