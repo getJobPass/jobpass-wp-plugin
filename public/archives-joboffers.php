@@ -19,7 +19,7 @@ do_action('jobpass-style');
                     <form role="search" action="<?php echo site_url('/'); ?>" method="get" id="searchform">
                     <div class="row align-items-center justify-content-center">
                     <div class="col-md-8">
-                        <input type="text" name="s" placeholder="Rechercher une offre d'emploi"/>
+                        <input type="text" name="s" placeholder="Rechercher une offre d'emploi" class="search-input"/>
                     </div>
                     <div class="col-md-4">
                         <input type="hidden" name="post_type" value="joboffers" /> <!-- // hidden 'products' value -->

@@ -315,3 +315,7 @@ a.btnJobPass:hover {
     margin-right: 2px;
   }
 }
+
+.search-input {
+  width: 100%;
+}
