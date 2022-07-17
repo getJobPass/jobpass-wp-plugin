@@ -2,7 +2,7 @@
 /*
   Plugin Name: JobPass
   Plugin URI: https://wordpress.org/plugins/jobpass/
-  Description: JobPass postulez partout, en 1 clic
+  Description: Ne recevez que des candidatures complètes et optimisez vos recrutements en permettant à vos candidats de postuler en un clic depuis votre site web ou votre point de vente !
   Author: JobPass
   Author URI: https://jobpass.com
   Version: 1.0.0

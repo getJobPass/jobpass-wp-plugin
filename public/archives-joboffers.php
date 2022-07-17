@@ -56,6 +56,7 @@ do_action('jobpass-style');
                    <li><i class="fa fa-calendar-alt"></i> <?php echo date('j/m/Y', $formatted_date) ?></li>
                 </ul>
                 <a href="<?php the_permalink(); ?>" class="btn btn-show" >Voir plus</a>
+                
             </div>
         </div>
     <?php   endwhile; 
