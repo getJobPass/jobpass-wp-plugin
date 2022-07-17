@@ -35,13 +35,13 @@ add_action('wp_footer', 'get_organisation_id');
           <h1
           ><?php the_title(); ?></h1>
           <ul class="jp_offer-metas">
-    <li><i class="fas fa-map-marker"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_place', true ) ); ?></li>
-    <li><i class="fa fa-calendar-alt"></i> <?php echo date('j/m/Y', $formatted_date) ?></li>
-    <li><i class="fa fa-briefcase"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?></li>
-    <li><i class="fa fa-briefcase"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_remote', true ) ); ?></li>
-    <li><i class="fa fa-euro-sign"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_salary', true ) ); ?></li>
-    <li><i class="fa fa-user-tie"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_experience', true ) ); ?></li>
-</ul>
+              <li><i class="fas fa-map-marker"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_place', true ) ); ?></li>
+              <li><i class="fa fa-calendar-alt"></i> <?php echo date('j/m/Y', $formatted_date) ?></li>
+              <li><i class="fa fa-briefcase"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?></li>
+              <li><i class="fa fa-briefcase"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_remote', true ) ); ?></li>
+              <li><i class="fa fa-euro-sign"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_salary', true ) ); ?></li>
+              <li><i class="fa fa-user-tie"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_experience', true ) ); ?></li>
+            </ul>
       </div>
       <div class="col-md-4  text-center">
           <a href="<?php if(get_option('organisationId')) {
@@ -57,17 +57,19 @@ add_action('wp_footer', 'get_organisation_id');
     </div>
   </div>
 </header>
-<section id="jp_content-offer" style="margin: 30px 0;">
+<section id="jp_content-offer" style="margin: 30px 0 !important;">
   <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8" style="margin: 30px 0;">
             <?php the_content()?>
             <?php  if(get_option('allowCredits')){?>
+              <p style="margin-top: 30px;">
             <small>Powered by <a href="https://jobpass.com" target="_blank">JobPass</a></small>
+            </p>
             <?php }?>
         </div>
         <aside class="col-md-4 jp-company">
-          <div class="card" style="max-height: 100%; height: auto ">
+          <div class="card" style="max-height: 100%; height: auto; margin: 30px 0; ">
             <h3>À propos de <?php echo get_option('companyName');?></h3>
             <p>
               <?php echo stripslashes(get_option('companyDescription'));?>
