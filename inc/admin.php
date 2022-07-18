@@ -265,7 +265,7 @@ function jobpass_display_form() {
 						}
 
         </style>
-		<scriptid="ze-snippet"src="https://static.zdassets.com/ekr/snippet.js?key=2c6362e5-111f-4c7b-a3df-f604fd35decb"></script>
+		<script id="ze-snippet"src="https://static.zdassets.com/ekr/snippet.js?key=2c6362e5-111f-4c7b-a3df-f604fd35decb"></script>
 
         '
         ;
