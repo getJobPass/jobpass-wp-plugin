@@ -168,3 +168,4 @@ function template_chooser($template)
   return $template;   
 }
 add_filter('template_include', 'template_chooser');    
+
