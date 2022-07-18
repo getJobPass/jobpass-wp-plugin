@@ -74,7 +74,7 @@ function joboffers_post_type() {
 			'supports' => array('title', 'editor', 'thumbnail'),
 			'has_archive' => true,
             'rewrite' => array('slug' => 'recrutement'),
-			'show_in_menu' => false
+			'show_in_menu' => true
             
 		)
 	);
