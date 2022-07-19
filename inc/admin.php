@@ -341,15 +341,15 @@ function jobpass_handle_form() {
 	}
 }
 
-add_filter('plugin_action_links', 'wptuts_plugin_settings_link', 10, 2);
-function wptuts_plugin_settings_link($links, $file) {
+add_filter('plugin_action_links', 'jp_plugin_settings_link', 10, 2);
+function jp_plugin_settings_link($jp_links, $jp_file) {
 
-    if ( $file == 'jobpass/jobpass.php' ) {
+    if ( $jp_file == 'jobpass/jobpass.php' ) {
         /* Insert the link at the end*/
-        $links['settings'] = sprintf( '<a href="%s"> %s </a>', admin_url( 'options-general.php?page=jobpass' ), __( 'Paramètres', 'plugin_domain' ) );
-				$links['jobpass_register'] = sprintf( '<a href="https://beta.jobpass.com/recruiter/auth/register/" target="_blank"> Inscription Recruteur </a>' );
-				$links['organisation'] = sprintf('<a href="https://beta.jobpass.com/recruiter/" target="_blank">Espace recruteur</a>');
+        $jp_links['settings'] = sprintf( '<a href="%s"> %s </a>', admin_url( 'options-general.php?page=jobpass' ), __( 'Paramètres', 'plugin_domain' ) );
+				$jp_links['jobpass_register'] = sprintf( '<a href="https://beta.jobpass.com/recruiter/auth/register/" target="_blank"> Inscription Recruteur </a>' );
+				$jp_links['organisation'] = sprintf('<a href="https://beta.jobpass.com/recruiter/" target="_blank">Espace recruteur</a>');
     }
-    return $links;
+    return $jp_links;
 
 }
