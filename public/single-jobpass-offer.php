@@ -82,14 +82,14 @@ add_action('wp_footer', 'get_organisation_id');
 </div> 
 <style>
     h1 {
-      color: <?php echo get_option('mainTitle') ?> !important;
+      color: <?php echo esc_attr(get_option('mainTitle')) ?> !important;
     }
 
     h2, h3, h4, h5, h6 {
-      color: <?php echo get_option('fontTitleColor') ?> !important;
+      color: <?php echo esc_attr(get_option('fontTitleColor')) ?> !important;
     }
     .jp_offer-metas {
-      color: <?php echo get_option('jobOffersData') ?> !important;
+      color: <?php echo esc_attr(get_option('jobOffersData')) ?> !important;
     }
 </style>
 <?php 
