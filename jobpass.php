@@ -81,41 +81,7 @@ function joboffers_post_type() {
 }
 add_action('init', 'joboffers_post_type');
 
-// function create_joboffers_taxonomy() {
-//     register_taxonomy('categorie','joboffers',array(
-//         'hierarchical' => false,
-//         'labels' => array(
-//             'name' => _x( 'Catégories', 'taxonomy general name' ),
-//             'singular_name' => _x( 'Catégorie', 'taxonomy singular name' ),
-//             'menu_name' => __( 'Catégories' ),
-//             'all_items' => __( 'Toutes les catégories' ),
-//             'edit_item' => __( 'Modifier les catégories' ),
-//             'update_item' => __( 'Mettre à jour les catégories' ),
-//             'add_new_item' => __( 'Ajouter des catégories' ),
-//             'new_item_name' => __( 'Nouvelle catégorie' ),
-//         ),
-//     'show_ui' => true,
-//     'show_in_rest' => true,
-//     'show_admin_column' => true,
-//     'rewrite' => array('slug' => 'recrutement/categorie'),
-
-//     ));
-// }
-// add_action( 'init', 'create_joboffers_taxonomy', 0 );
-
 add_filter('single_template', 'joboffer_template');
-
-// function wpa_course_post_link( $post_link, $id = 0 ){
-//     $post = get_post($id);  
-//     if ( is_object( $post ) ){
-//         $terms = wp_get_object_terms( $post->ID, 'joboffers' );
-//         if( $terms ){
-//             return str_replace( '%recrutement%' , $terms[0]->slug , $post_link );
-//         }
-//     }
-//     return $post_link;  
-// }
-// add_filter( 'post_type_link', 'wpa_course_post_link', 10, 3 );
 
 function joboffer_template($single) {
 
