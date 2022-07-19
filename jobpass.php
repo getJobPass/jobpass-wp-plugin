@@ -97,18 +97,20 @@ function joboffer_template($single) {
 }
 
 
-function add_css_file() {
+function jp_add_css_file() {
     ?>
-<link rel="stylesheet" href="<?php echo esc_url('/wp-content/plugins/jobpass/public/assets/jobpass.css' ); ?>"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"  crossorigin="anonymous" />
-    <?php
+
+<?php 
+    wp_enqueue_style('jobpass-css', plugin_dir_url(__FILE__) . 'public/assets/jobpass.css') ;
+    wp_enqueue_style('fontawesome-css', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
  }
- add_action( 'jobpass-style', 'add_css_file' );
+
+ add_action( 'jobpass-style', 'jp_add_css_file' );
+
 
  include(__DIR__ . '/inc/metajoboffers-fields.php');
 
-
- add_filter('template_include', 'joboffers_archive', 100);
+add_filter('template_include', 'joboffers_archive', 100);
 
 function joboffers_archive( $template ) {
   if ( is_post_type_archive('joboffers') ) {
