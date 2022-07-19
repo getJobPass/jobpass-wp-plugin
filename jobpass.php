@@ -26,11 +26,11 @@ if ( is_admin() ) {
 	require_once __DIR__ . '/inc/admin.php';
 }
 
-function rewrite_hiring_space() {
+function jp_rewrite_hiring_space() {
 
   return flush_rewrite_rules();
   }
-  add_action('init', 'rewrite_hiring_space');
+  add_action('init', 'jp_rewrite_hiring_space');
 
 /* Inline script printed out in the footer */
 add_action('wp_footer', 'jobpass_add_script_wp_footer');
@@ -57,7 +57,7 @@ function jobpass_add_script_wp_footer() {
 	    <?php
     }
 }
-function joboffers_post_type() {
+function jp_joboffers_post_type() {
 	register_post_type( 'joboffers',
 		array(
 			'labels' => array(
@@ -79,11 +79,11 @@ function joboffers_post_type() {
 		)
 	);
 }
-add_action('init', 'joboffers_post_type');
+add_action('init', 'jp_joboffers_post_type');
 
-add_filter('single_template', 'joboffer_template');
+add_filter('single_template', 'jp_joboffer_template');
 
-function joboffer_template($single) {
+function jp_joboffer_template($single) {
 
     global $post;
 
@@ -110,9 +110,9 @@ function jp_add_css_file() {
 
  include(__DIR__ . '/inc/metajoboffers-fields.php');
 
-add_filter('template_include', 'joboffers_archive', 100);
+add_filter('template_include', 'jp_joboffers_archive', 100);
 
-function joboffers_archive( $template ) {
+function jp_joboffers_archive( $jp_template ) {
   if ( is_post_type_archive('joboffers') ) {
     $theme_files = array('archives-joboffers.php', 'jobpass/joboffers-archive.php');
     $exists_in_theme = locate_template($theme_files, false);
@@ -122,10 +122,10 @@ function joboffers_archive( $template ) {
       return JOBPASS_PATH . '/public/archives-joboffers.php';
     }
   }
-  return $template;
+  return $jp_template;
 }
 
-function template_chooser($template)   
+function jp_template_chooser($jp_template)   
 {    
   global $wp_query;   
   $post_type = get_query_var('post_type');   
@@ -133,7 +133,7 @@ function template_chooser($template)
   {
     return locate_template(JOBPASS_PATH . '/public/job-search.php');  //  redirect to archive-search.php
   }   
-  return $template;   
+  return $jp_template;   
 }
-add_filter('template_include', 'template_chooser');    
+add_filter('template_include', 'jp_template_chooser');    
 

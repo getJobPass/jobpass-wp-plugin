@@ -1,8 +1,8 @@
 <?php
 defined( 'ABSPATH' ) or die( 'Hack me not' );
 
-add_action( 'admin_menu', 'jobpass_settings' );
-function jobpass_settings() {
+add_action( 'admin_menu', 'jp_settings' );
+function jp_settings() {
 	add_menu_page(
 		"JobPass",
 		"JobPass",
