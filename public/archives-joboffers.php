@@ -95,7 +95,7 @@ do_action('jobpass-style');
       ><img
         src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/jobpass-icon.svg' )?>"
         style="width: 40px; margin-right: 20px"
-      />Déposer avec JobPass</a>
+      />Postuler spontanément</a>
             </div>
         </div>
     </div>
