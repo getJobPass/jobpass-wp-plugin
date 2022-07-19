@@ -289,10 +289,10 @@ function jobpass_handle_form() {
 
 		<?php 
 			if( isset($_POST['headerBackgroundColor']) && isset($_POST['fontTitleColor'])) {
-				update_option('headerBackgroundColor', $_POST['headerBackgroundColor']);
-				update_option('fontTitleColor', $_POST['fontTitleColor']);
-				update_option('mainTitle', $_POST['mainTitle']);
-				update_option('jobOffersData', $_POST['jobOffersData']);
+				update_option('headerBackgroundColor', sanitize_hex_color($_POST['headerBackgroundColor']));
+				update_option('fontTitleColor', sanitize_hex_color($_POST['fontTitleColor']));
+				update_option('mainTitle', sanitize_hex_color($_POST['mainTitle']));
+				update_option('jobOffersData', sanitize_hex_color($_POST['jobOffersData']));
 			}
 		?>
 		<?php
