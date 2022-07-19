@@ -100,7 +100,7 @@ function joboffer_template($single) {
 function add_css_file() {
     ?>
 <link rel="stylesheet" href="<?php echo esc_url('/wp-content/plugins/jobpass/public/assets/jobpass.css' ); ?>"/>
-    <script src="https://kit.fontawesome.com/2fba8b9ac4.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"  crossorigin="anonymous" />
     <?php
  }
  add_action( 'jobpass-style', 'add_css_file' );
