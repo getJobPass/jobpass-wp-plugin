@@ -103,22 +103,22 @@ do_action('jobpass-style');
 </div>  
 <style>
     h1 {
-      color: <?php echo get_option('mainTitle') ?> !important;
+      color: <?php echo esc_attr(get_option('mainTitle')) ?> !important;
     }
 
     h2, h3, h4, h5, h6 {
-      color: <?php echo get_option('fontTitleColor') ?> !important;
+      color: <?php echo esc_attr(get_option('fontTitleColor')) ?> !important;
     }
     h3 a {
-        color: <?php echo get_option('fontTitleColor') ?> !important;
+        color: <?php echo esc_attr(get_option('fontTitleColor')) ?> !important;
         text-decoration: none; 
         margin-top: 0 !important;
     }
     .jp_offer-metas {
-      color: <?php echo get_option('jobOffersData') ?> !important;
+      color: <?php echo esc_attr(get_option('jobOffersData')) ?> !important;
     }
     .btn-show {
-        background-color: <?php echo get_option('mainTitle')?>;
+        background-color: <?php echo esc_attr(get_option('mainTitle'))?>;
         color: <?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>;
         border-radius: 8px;
         
@@ -129,7 +129,7 @@ do_action('jobpass-style');
     }
 
     .btn-search {
-        background-color: <?php echo get_option('mainTitle')?> !important;
+        background-color: <?php echo esc_attr(get_option('mainTitle'))?> !important;
         border-radius: 8px !important;
         padding: 10px 20px !important; 
         width: 100%;
