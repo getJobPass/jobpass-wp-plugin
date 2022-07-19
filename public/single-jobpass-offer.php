@@ -15,15 +15,15 @@ $formatted_date = strtotime($jp_start_date);
 $jp_validTrough = get_post_meta($post -> ID, 'jp_validTrough', true);
 $formatted_validTrough = strtotime($formatted_validTrough); 
 
-function get_organisation_id() {
+function jp_get_organisation_id() {
   if (get_option( 'organisationId' )) {
-      $orgnisationId = get_option( 'organisationId' );
+      $jp_orgnisationId = get_option( 'organisationId' );
     }
   else {
     
   }
 }
-add_action('wp_footer', 'get_organisation_id');
+add_action('wp_footer', 'jp_get_organisation_id');
 
  ?>
 <div class="jobpass-content">
@@ -36,7 +36,7 @@ add_action('wp_footer', 'get_organisation_id');
           ><?php the_title(); ?></h1>
           <ul class="jp_offer-metas">
               <li><i class="fas fa-map-marker"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_place', true ) ); ?></li>
-              <li><i class="fa fa-calendar-alt"></i> <?php echo date('j/m/Y', $formatted_date) ?></li>
+              <li><i class="fa fa-calendar-alt"></i> <?php echo esc_attr(date('j/m/Y', $formatted_date)) ?></li>
               <li><i class="fa fa-briefcase"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?></li>
               <li><i class="fa fa-briefcase"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_remote', true ) ); ?></li>
               <li><i class="fa fa-euro-sign"></i> <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_salary', true ) ); ?></li>
@@ -70,9 +70,9 @@ add_action('wp_footer', 'get_organisation_id');
         </div>
         <aside class="col-md-4 jp-company">
           <div class="card" style="max-height: 100%; height: auto; margin: 30px 0; ">
-            <h3>À propos de <?php echo get_option('companyName');?></h3>
+            <h3>À propos de <?php echo esc_html(get_option('companyName'));?></h3>
             <p>
-              <?php echo stripslashes(get_option('companyDescription'));?>
+              <?php echo stripslashes(esc_html(get_option('companyDescription')));?>
             </p>
             </div>
         </aside>
@@ -93,9 +93,9 @@ add_action('wp_footer', 'get_organisation_id');
     }
 </style>
 <?php 
-	$content= get_the_content(); 
-	$logo = get_theme_mod( 'custom_logo' );
-	$image = wp_get_attachment_image_src( $logo, 'full' );
+	$jp_offer_content= get_the_content(); 
+	$jp_company_logo = get_theme_mod( 'custom_logo' );
+	$jp_company_image = wp_get_attachment_image_src( $jp_company_logo, 'full' );
 ?>
 
 <script type="application/ld+json">
@@ -103,20 +103,20 @@ add_action('wp_footer', 'get_organisation_id');
       "@context" : "https://schema.org/",
       "@type" : "JobPosting",
       "title" : "<?php the_title() ?>",
-      "description" : "<?php echo wp_strip_all_tags( $content )?>",
+      "description" : "<?php echo wp_strip_all_tags( esc_attr( esc_attr($jp_offer_content) ))?>",
       "identifier": {
         "@type": "PropertyValue",
         "name": "<?php echo get_option('companyName') ?>",
         "value": "<?php the_ID() ?>"
       },
-      "datePosted" : "<?php echo get_the_date('Y/m/d g:ia') ?>",
-      "validThrough" : " <?php echo date('Y-m-dTg:i', $formatted_validTrough) ?>",
+      "datePosted" : "<?php echo esc_attr(get_the_date('Y/m/d g:ia')) ?>",
+      "validThrough" : " <?php echo esc_attr(date('Y-m-dTg:i', $formatted_validTrough)) ?>",
       "employmentType" : "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?>",
       "hiringOrganization" : {
         "@type" : "Organization",
-        "name" : "<?php echo get_option('companyName') ?>",
-        "sameAs" : "<?php echo get_site_url() ?>",
-        "logo" : "<?php echo $image[0] ?>"
+        "name" : "<?php echo esc_attr(get_option('companyName')) ?>",
+        "sameAs" : "<?php echo esc_attr(get_site_url()) ?>",
+        "logo" : "<?php echo esc_attr($jp_company_image[0]) ?>"
       },
       "jobLocation": {
       "@type": "Place",
@@ -134,7 +134,7 @@ add_action('wp_footer', 'get_organisation_id');
         "currency": "EUR",
         "value": {
           "@type": "QuantitativeValue",
-          "value": <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_salary', true ) ); ?>,
+          "value": "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_salary', true ) ); ?>",
           "unitText": "MONTH"
         }
       }

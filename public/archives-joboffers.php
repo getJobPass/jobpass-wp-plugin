@@ -16,7 +16,7 @@ do_action('jobpass-style');
             </div>
             <div class="col-md-12" style="margin-top: 3rem">
                 <div style="display:block; margin:0 auto;" >
-                    <form role="search" action="<?php echo site_url('/'); ?>" method="get" id="searchform">
+                    <form role="search" action="<?php echo esc_attr(site_url('/')); ?>" method="get" id="searchform">
                     <div class="row align-items-center justify-content-center" style="margin: 0 auto;">
                     <div class="col-md-8">
                         <input type="text" name="s" placeholder="Rechercher une offre d'emploi" class="search-input"/>
@@ -70,14 +70,14 @@ do_action('jobpass-style');
         <?php
   if(get_option('spontaneousApplication')){?>
         <h2 class="text-center">Candidature spontanée</h2>
-        <p class="text-center"><?php echo stripslashes(get_option('spontaneousDescription'));?></p>
+        <p class="text-center"><?php echo stripslashes(esc_html(get_option('spontaneousDescription')));?></p>
   <?php } ?>
         </div>
         </div>
         <div class="row">
             <div class="col-md-12">
             <a
-      href="https://jobpass.live/<?php echo get_option('organisationId') ?>"
+      href="https://jobpass.live/<?php echo esc_attr(get_option('organisationId')) ?>"
       target="_blank"
       style="
         padding: 3px 12px;
