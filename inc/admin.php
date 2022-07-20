@@ -1,8 +1,8 @@
 <?php
 defined( 'ABSPATH' ) or die( 'Hack me not' );
 
-add_action( 'admin_menu', 'jp_settings' );
-function jp_settings() {
+add_action( 'admin_menu', 'jobpass_settings' );
+function jobpass_settings() {
 	add_menu_page(
 		"JobPass",
 		"JobPass",
@@ -228,8 +228,8 @@ function jobpass_handle_form() {
 	}
 }
 
-add_filter('plugin_action_links', 'jp_plugin_settings_link', 10, 2);
-function jp_plugin_settings_link($jp_links, $jp_file) {
+add_filter('plugin_action_links', 'jobpass_plugin_settings_link', 10, 2);
+function jobpass_plugin_settings_link($jp_links, $jp_file) {
 
     if ( $jp_file == 'jobpass/jobpass.php' ) {
         /* Insert the link at the end*/
@@ -241,8 +241,8 @@ function jp_plugin_settings_link($jp_links, $jp_file) {
 
 }
 
-add_action( 'admin_enqueue_scripts', 'jp_load_admin_style' );
-function jp_load_admin_style() {
+add_action( 'admin_enqueue_scripts', 'jobpass_load_admin_style' );
+function jobpass_load_admin_style() {
     //OR
     wp_enqueue_style( 'admin_css', plugin_dir_url(__FILE__). 'style/style.css', false, '1.0.0' );
 	wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');

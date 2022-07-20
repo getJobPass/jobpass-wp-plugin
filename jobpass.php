@@ -26,11 +26,11 @@ if ( is_admin() ) {
 	require_once __DIR__ . '/inc/admin.php';
 }
 
-function jp_rewrite_hiring_space() {
+function jobpass_rewrite_hiring_space() {
 
   return flush_rewrite_rules();
   }
-  add_action('init', 'jp_rewrite_hiring_space');
+  add_action('init', 'jobpass_rewrite_hiring_space');
 
 /* Inline script printed out in the footer */
 add_action('wp_footer', 'jobpass_add_script_wp_footer');
@@ -57,7 +57,7 @@ function jobpass_add_script_wp_footer() {
 	    <?php
     }
 }
-function jp_joboffers_post_type() {
+function jobpass_joboffers_post_type() {
 	register_post_type( 'joboffers',
 		array(
 			'labels' => array(
@@ -74,16 +74,16 @@ function jp_joboffers_post_type() {
 			'supports' => array('title', 'editor', 'thumbnail'),
 			'has_archive' => true,
             'rewrite' => array('slug' => 'recrutement'),
-			'show_in_menu' => true
+			'show_in_menu' => false
             
 		)
 	);
 }
-add_action('init', 'jp_joboffers_post_type');
+add_action('init', 'jobpass_joboffers_post_type');
 
-add_filter('single_template', 'jp_joboffer_template');
+add_filter('single_template', 'jobpass_joboffer_template');
 
-function jp_joboffer_template($single) {
+function jobpass_joboffer_template($single) {
 
     global $post;
 
@@ -97,7 +97,7 @@ function jp_joboffer_template($single) {
 }
 
 
-function jp_add_css_file() {
+function jobpass_add_css_file() {
     ?>
 
 <?php 
@@ -105,14 +105,14 @@ function jp_add_css_file() {
     wp_enqueue_style('fontawesome-css', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
  }
 
- add_action( 'jobpass-style', 'jp_add_css_file' );
+ add_action( 'jobpass-style', 'jobpass_add_css_file' );
 
 
  include(__DIR__ . '/inc/metajoboffers-fields.php');
 
-add_filter('template_include', 'jp_joboffers_archive', 100);
+add_filter('template_include', 'jobpass_joboffers_archive', 100);
 
-function jp_joboffers_archive( $jp_template ) {
+function jobpass_joboffers_archive( $jp_template ) {
   if ( is_post_type_archive('joboffers') ) {
     $theme_files = array('archives-joboffers.php', 'jobpass/joboffers-archive.php');
     $exists_in_theme = locate_template($theme_files, false);
@@ -125,7 +125,7 @@ function jp_joboffers_archive( $jp_template ) {
   return $jp_template;
 }
 
-function jp_template_chooser($jp_template)   
+function jobpass_template_chooser($jp_template)   
 {    
   global $wp_query;   
   $post_type = get_query_var('post_type');   
@@ -135,5 +135,5 @@ function jp_template_chooser($jp_template)
   }   
   return $jp_template;   
 }
-add_filter('template_include', 'jp_template_chooser');    
+add_filter('template_include', 'jobpass_template_chooser');    
 

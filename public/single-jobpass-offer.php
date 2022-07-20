@@ -15,7 +15,7 @@ $formatted_date = strtotime($jp_start_date);
 $jp_validTrough = get_post_meta($post -> ID, 'jp_validTrough', true);
 $formatted_validTrough = strtotime($formatted_validTrough); 
 
-function jp_get_organisation_id() {
+function jobpass_get_organisation_id() {
   if (get_option( 'organisationId' )) {
       $jp_orgnisationId = get_option( 'organisationId' );
     }
@@ -23,7 +23,7 @@ function jp_get_organisation_id() {
     
   }
 }
-add_action('wp_footer', 'jp_get_organisation_id');
+add_action('wp_footer', 'jobpass_get_organisation_id');
 
  ?>
 <div class="jobpass-content">
