@@ -33,7 +33,7 @@ function jobpass_settings() {
 
 function jobpass_config_page() {
 	if ( isset( $_POST['updated'] ) && $_POST['updated'] === 'true' ) {
-		jobpass_handle_form();
+		sanitize_key(jobpass_handle_form());
 	}
 	echo jobpass_display_form();
 }
