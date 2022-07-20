@@ -84,7 +84,7 @@ function jobpass_display_form() {
 				<label>
 						Autoriser les candidatures spontanées ?
 						<br />
-						<input size="76" name="spontaneousApplication" type="checkbox" id="spontaneousApplication" ' . checked((get_option("spontaneousApplication")), true, false) .' value="true" />
+						<input size="76" name="spontaneousApplication" type="checkbox" id="spontaneousApplication" ' . checked((get_option("spontaneousApplication")), 1, false) .' value="1" />
 						
 				</label>
 				<label>
@@ -196,10 +196,10 @@ function jobpass_handle_form() {
 		
 
 		<?php 
-			$allowSpontaneous = $_POST['spontaneousApplication'] ? $_POST['spontaneousApplication'] : '';
+			$allowSpontaneous = sanitize_key($_POST['spontaneousApplication']) ? sanitize_key($_POST['spontaneousApplication']) : '';
 			update_option('spontaneousApplication',sanitize_key($allowSpontaneous ));
 
-			$allowCredits = $_POST['allowCredits'] ? $_POST['allowCredits'] : '';
+			$allowCredits = sanitize_key($_POST['allowCredits']) ? sanitize_key($_POST['allowCredits']) : '';
 			update_option('allowCredits',sanitize_key($allowCredits))
 			
 		?>
@@ -208,10 +208,10 @@ function jobpass_handle_form() {
 				$content = '';
 				if (isset($_POST) && !empty($_POST)) {
 					if (isset($_POST['submit']) && $_POST['submit'] != '') {
-						$content=$_POST['mycustomeditor'];
+						$content=sanitize_key($_POST['jobpass_editor']);
 					}
 				}
-				$editor_id = 'mycustomeditor';
+				$editor_id = 'jobpass_editor';
 		?>
 
             <div class="notice notice-success is-dismissible">
