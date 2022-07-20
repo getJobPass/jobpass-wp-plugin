@@ -121,11 +121,11 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
       "jobLocation": {
       "@type": "Place",
         "address": {
-        "@type": "City",
+        "@type": "PostalAddress",
         "streetAddress": "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_completeAddress', true ) ); ?>",
         "addressLocality": "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_place', true ) ); ?>",
-        "addressRegion": "",
-        "postalCode": "",
+        "addressRegion": "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_postalCode', true ) ); ?>",
+        "postalCode": "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_addressRegion', true ) ); ?>",
         "addressCountry": "FR"
         }
       },

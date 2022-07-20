@@ -36,6 +36,8 @@ function hcf_save_meta_box( $post_id ) {
         'jp_remote',
         'jp_salary', 
         'jp_experience',
+        'jp_postalCode', 
+        'jp_addressRegion',
     ];
     foreach ( $fields as $field ) {
         if ( array_key_exists( $field, $_POST ) ) {

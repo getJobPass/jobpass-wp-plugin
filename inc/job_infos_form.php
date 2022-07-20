@@ -12,7 +12,7 @@
     </style>
     
     <p class="meta-options hcf_field">
-        <label for="jp_place">Lieu de l'offre</label>
+        <label for="jp_place">Ville</label>
         <input id="jp_place"
             type="text"
             name="jp_place"
@@ -24,6 +24,20 @@
             type="text"
             name="jp_completeAddress"
             value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_completeAddress', true ) ); ?>">
+    </p>
+    <p class="meta-options hcf_field">
+        <label for="jp_postalCode">Code postal</label>
+        <input id="jp_postalCode"
+            type="text"
+            name="jp_postalCode"
+            value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_postalCode', true ) ); ?>">
+    </p>
+    <p class="meta-options hcf_field">
+        <label for="jp_addressRegion">Région</label>
+        <input id="jp_addressRegion"
+            type="text"
+            name="jp_addressRegion"
+            value="<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_addressRegion', true ) ); ?>">
     </p>
     <p class="meta-options hcf_field">
         <label for="jp_startDate">Date de début</label>
