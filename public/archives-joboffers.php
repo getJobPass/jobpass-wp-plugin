@@ -60,6 +60,12 @@ do_action('jobpass-style');
             </div>
         </div>
     <?php   endwhile; 
+        else: ?>
+            <h3 class="text-center">
+                <i class="fas fa-times-circle" style="color:#0F0649"></i><br/>
+                Aucune offre d'emploi disponible pour le moment
+            </h3>
+        <?php
         endif; ?>
         </div>
 </section>
