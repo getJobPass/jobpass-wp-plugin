@@ -8,7 +8,7 @@ do_action('jobpass-style');
  get_header(); 
  ?> 
 <div class="jobpass-content">
- <header style="background-color: <?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>; margin-bottom: 30px;" >
+ <header style="background-color: <?php echo esc_attr(get_option( 'JobPassHeaderBackgroundColor' )) ?>; margin-bottom: 30px;" >
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -74,16 +74,16 @@ do_action('jobpass-style');
         <div class="row">
             <div class="col-md-12">
         <?php
-  if(get_option('spontaneousApplication')){?>
+  if(get_option('JobPassSpontaneousApplication')){?>
         <h2 class="text-center">Candidature spontanée</h2>
-        <p class="text-center"><?php echo stripslashes(esc_html(get_option('spontaneousDescription')));?></p>
+        <p class="text-center"><?php echo stripslashes(esc_html(get_option('JobPassSpontaneousDescription')));?></p>
   <?php } ?>
         </div>
         </div>
         <div class="row">
             <div class="col-md-12">
             <a
-      href="https://jobpass.live/<?php echo esc_attr(get_option('organisationId')) ?>"
+      href="https://jobpass.live/<?php echo esc_attr(get_option('JobPassOrganisationId')) ?>"
       target="_blank"
       style="
         padding: 3px 12px;
@@ -109,23 +109,23 @@ do_action('jobpass-style');
 </div>  
 <style>
     h1 {
-      color: <?php echo esc_attr(get_option('mainTitle')) ?> !important;
+      color: <?php echo esc_attr(get_option('JobPassMainTitle')) ?> !important;
     }
 
     h2, h3, h4, h5, h6 {
-      color: <?php echo esc_attr(get_option('fontTitleColor')) ?> !important;
+      color: <?php echo esc_attr(get_option('JobPassFontTitleColor')) ?> !important;
     }
     h3 a {
-        color: <?php echo esc_attr(get_option('fontTitleColor')) ?> !important;
+        color: <?php echo esc_attr(get_option('JobPassFontTitleColor')) ?> !important;
         text-decoration: none; 
         margin-top: 0 !important;
     }
-    .jp_offer-metas {
-      color: <?php echo esc_attr(get_option('jobOffersData')) ?> !important;
+    .jp_offer-metas li {
+      color: <?php echo esc_attr(get_option('JobPassOffersData')) ?> !important;
     }
     .btn-show {
-        background-color: <?php echo esc_attr(get_option('mainTitle'))?>;
-        color: <?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>;
+        background-color: <?php echo esc_attr(get_option('JobPassMainTitle'))?>;
+        color: <?php echo esc_attr(get_option( 'JobPassHeaderBackgroundColor' )) ?>;
         border-radius: 8px;
         
     }
@@ -135,7 +135,7 @@ do_action('jobpass-style');
     }
 
     .btn-search {
-        background-color: <?php echo esc_attr(get_option('mainTitle'))?> !important;
+        background-color: <?php echo esc_attr(get_option('JobPassMainTitle'))?> !important;
         border-radius: 8px !important;
         padding: 10px 20px !important; 
         width: 100%;

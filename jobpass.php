@@ -43,7 +43,7 @@ function jobpass_add_script_wp_footer() {
             el.setAttribute('src', 'https://cdn.jobpass.com/jobtag.js');
             el.setAttribute('type', 'text/javascript');
             el.setAttribute('async', true);
-            el.setAttribute('data-sid', '<?php echo get_option( "jobpassIdKey" ); ?>');
+            el.setAttribute('data-sid', '<?php echo esc_attr(get_option( "jobpassIdKey" )); ?>');
             if (document.body !== null) {
                 document.body.appendChild(el);
             }
@@ -112,7 +112,7 @@ function jobpass_add_css_file() {
 
 add_filter('template_include', 'jobpass_joboffers_archive', 100);
 
-function jobpass_joboffers_archive( $jp_template ) {
+function jobpass_joboffers_archive( $jobpass_template ) {
   if ( is_post_type_archive('joboffers') ) {
     $theme_files = array('archives-joboffers.php', 'jobpass/joboffers-archive.php');
     $exists_in_theme = locate_template($theme_files, false);
@@ -122,10 +122,10 @@ function jobpass_joboffers_archive( $jp_template ) {
       return JOBPASS_PATH . '/public/archives-joboffers.php';
     }
   }
-  return $jp_template;
+  return $jobpass_template;
 }
 
-function jobpass_template_chooser($jp_template)   
+function jobpass_template_chooser($jobpass_template)   
 {    
   global $wp_query;   
   $post_type = get_query_var('post_type');   
@@ -133,7 +133,7 @@ function jobpass_template_chooser($jp_template)
   {
     return locate_template(JOBPASS_PATH . '/public/job-search.php');  //  redirect to archive-search.php
   }   
-  return $jp_template;   
+  return $jobpass_template;   
 }
 add_filter('template_include', 'jobpass_template_chooser');    
 

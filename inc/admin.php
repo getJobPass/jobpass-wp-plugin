@@ -79,24 +79,24 @@ function jobpass_display_form() {
 					<label>
 					' . __( 'Id de l\'entreprise', 'jobpass' ) . '
 					<br />
-					<input type="text" name="organisationId" value="' . get_option( 'organisationId' ) . '"/>
+					<input type="text" name="JobPassOrganisationId" value="' . get_option( 'JobPassOrganisationId' ) . '"/>
 				</label>
 				<label>
 						Autoriser les candidatures spontanées ?
 						<br />
-						<input size="76" name="spontaneousApplication" type="checkbox" id="spontaneousApplication" ' . checked((get_option("spontaneousApplication")), 1, false) .' value="1" />
+						<input size="76" name="JobPassSpontaneousApplication" type="checkbox" id="JobPassSpontaneousApplication" ' . checked((get_option("JobPassSpontaneousApplication")), 1, false) .' value="1" />
 						
 				</label>
 				<label>
 				<span>Description candidature spontanée</span>
 				<br>
-				<textarea name="spontaneousDescription"  class="all-options" style="width: 100%" rows="5" >'. stripslashes(get_option( 'spontaneousDescription' )) .  '</textarea>
+				<textarea name="JobPassSpontaneousDescription"  class="all-options" style="width: 100%" rows="5" >'. stripslashes(get_option( 'JobPassSpontaneousDescription' )) .  '</textarea>
 
 			</label>
 			<label>
 						Activer les crédits ?
 						<br />
-						<input size="76" name="allowCredits" type="checkbox" id="allowCredits" ' . checked((get_option("allowCredits")), 1, false) .' value="1" />
+						<input size="76" name="JobPassAllowCredits" type="checkbox" id="JobPassAllowCredits" ' . checked((get_option("JobPassAllowCredits")), 1, false) .' value="1" />
 						
 				</label>
                     <input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
@@ -110,22 +110,22 @@ function jobpass_display_form() {
 				<label>
 					<span class="mr-5">' . __( 'Couleur de fond', 'jobpass' ) . '</span>
 					
-					<input type="color" name="headerBackgroundColor" value="' . get_option( 'headerBackgroundColor' ) . '"/>
+					<input type="color" name="JobPassHeaderBackgroundColor" value="' . get_option( 'JobPassHeaderBackgroundColor' ) . '"/>
 				</label>
 				<label>
 					<span class="mr-5">' . __('Couleur du titre principal', 'jobpass' ) . ' </span>
 					
-					<input type="color" name="mainTitle" value="'. get_option( 'mainTitle' ) . '">
+					<input type="color" name="JobPassMainTitle" value="'. get_option( 'JobPassMainTitle' ) . '">
 				</label>
 				<label>
 					<span class="mr-5">' . __('Couleur des titres', 'jobpass' ) . ' </span>
 					
-					<input type="color" name="fontTitleColor" value="'. get_option( 'fontTitleColor' ) . '">
+					<input type="color" name="JobPassFontTitleColor" value="'. get_option( 'JobPassFontTitleColor' ) . '">
 				</label>
 				<label>
 					<span class="mr-5">' . __('Couleur des données de l\'offre', 'jobpass' ) . ' </span>
 					
-					<input type="color" name="jobOffersData" value="'. get_option( 'jobOffersData' ) . '">
+					<input type="color" name="JobPassOffersData" value="'. get_option( 'JobPassOffersData' ) . '">
 				</label>
 				<input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
 			</div>
@@ -136,12 +136,12 @@ function jobpass_display_form() {
 			<label>
 				<span>Nom de votre entreprise</span>
 				<br />
-				<input type="text" name="companyName" value="' . get_option( 'companyName' ) . '" /> 
+				<input type="text" name="JobPassCompanyName" value="' . get_option( 'JobPassCompanyName' ) . '" /> 
 			</label>
 			<label>
 				<span>Description de votre entreprise</span>
 				<br>
-				<textarea name="companyDescription"  class="all-options" style="width: 100%" rows="5" >'.stripslashes(get_option( 'companyDescription' )) .'</textarea>
+				<textarea name="JobPassCompanyDescription"  class="all-options" style="width: 100%" rows="5" >'.stripslashes(get_option( 'JobPassCompanyDescription' )) .'</textarea>
 			</label>
 			<label>
 			</label>
@@ -169,49 +169,49 @@ function jobpass_handle_form() {
 		exit;
 	} else {
 		// Handle our form data
-		if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['organisationId'] ) && isset($_POST['headerBackgroundColor']) && isset($_POST['fontTitleColor']) ) {
+		if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['JobPassOrganisationId'] ) && isset($_POST['JobPassHeaderBackgroundColor']) && isset($_POST['JobPassFontTitleColor']) ) {
 			update_option( 'jobpassIdKey', sanitize_text_field( $_POST['jobpassIdKey'] ) );
-			update_option('organisationId', sanitize_text_field( $_POST['organisationId']));
+			update_option('JobPassOrganisationId', sanitize_text_field( $_POST['JobPassOrganisationId']));
 			?>
 
 		<?php 
-			if( isset($_POST['headerBackgroundColor']) && isset($_POST['fontTitleColor'])) {
-				update_option('headerBackgroundColor', sanitize_hex_color($_POST['headerBackgroundColor']));
-				update_option('fontTitleColor', sanitize_hex_color($_POST['fontTitleColor']));
-				update_option('mainTitle', sanitize_hex_color($_POST['mainTitle']));
-				update_option('jobOffersData', sanitize_hex_color($_POST['jobOffersData']));
+			if( isset($_POST['JobPassHeaderBackgroundColor']) && isset($_POST['JobPassFontTitleColor'])) {
+				update_option('JobPassHeaderBackgroundColor', sanitize_hex_color($_POST['JobPassHeaderBackgroundColor']));
+				update_option('JobPassFontTitleColor', sanitize_hex_color($_POST['JobPassFontTitleColor']));
+				update_option('JobPassMainTitle', sanitize_hex_color($_POST['JobPassMainTitle']));
+				update_option('JobPassOffersData', sanitize_hex_color($_POST['JobPassOffersData']));
 			}
 		?>
 		<?php
-				if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['companyDescription']) ) {
-					update_option( 'companyName', sanitize_text_field( $_POST['companyName'] ) );
-					update_option('companyDescription',  sanitize_textarea_field($_POST['companyDescription']));
+				if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['JobPassCompanyDescription']) ) {
+					update_option( 'JobPassCompanyName', sanitize_text_field( $_POST['JobPassCompanyName'] ) );
+					update_option('JobPassCompanyDescription',  sanitize_textarea_field($_POST['JobPassCompanyDescription']));
 				}
 		?>
 		<?php
-				if ( isset( $_POST['spontaneousDescription'] ) ) {
-					update_option('spontaneousDescription',  sanitize_textarea_field($_POST['spontaneousDescription']));
+				if ( isset( $_POST['JobPassSpontaneousDescription'] ) ) {
+					update_option('JobPassSpontaneousDescription',  sanitize_textarea_field($_POST['JobPassSpontaneousDescription']));
 				}
 		?>
 		
 
 		<?php 
-			$allowSpontaneous = sanitize_key($_POST['spontaneousApplication']) ? sanitize_key($_POST['spontaneousApplication']) : '';
-			update_option('spontaneousApplication',sanitize_key($allowSpontaneous ));
+			$JobPassAllowSpontaneous = sanitize_key($_POST['JobPassSpontaneousApplication']) ? sanitize_key($_POST['JobPassSpontaneousApplication']) : '';
+			update_option('JobPassSpontaneousApplication',sanitize_key($JobPassAllowSpontaneous ));
 
-			$allowCredits = sanitize_key($_POST['allowCredits']) ? sanitize_key($_POST['allowCredits']) : '';
-			update_option('allowCredits',sanitize_key($allowCredits))
+			$JobPassAllowCredits = sanitize_key($_POST['JobPassAllowCredits']) ? sanitize_key($_POST['JobPassAllowCredits']) : '';
+			update_option('JobPassAllowCredits',sanitize_key($JobPassAllowCredits))
 			
 		?>
 
 		<?php 
-				$content = '';
+				$jobpass_content = '';
 				if (isset($_POST) && !empty($_POST)) {
 					if (isset($_POST['submit']) && $_POST['submit'] != '') {
-						$content=sanitize_key($_POST['jobpass_editor']);
+						$jobpass_content=sanitize_key($_POST['jobpass_editor']);
 					}
 				}
-				$editor_id = 'jobpass_editor';
+				$jobpass_editor_id = 'jobpass_editor';
 		?>
 
             <div class="notice notice-success is-dismissible">

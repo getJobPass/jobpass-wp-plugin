@@ -16,8 +16,8 @@ $jp_validTrough = get_post_meta($post -> ID, 'jp_validTrough', true);
 $formatted_validTrough = strtotime($formatted_validTrough); 
 
 function jobpass_get_organisation_id() {
-  if (get_option( 'organisationId' )) {
-      $jp_orgnisationId = get_option( 'organisationId' );
+  if (get_option( 'JobPassOrganisationId' )) {
+      $jp_orgnisationId = get_option( 'JobPassOrganisationId' );
     }
   else {
     
@@ -27,7 +27,7 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
 
  ?>
 <div class="jobpass-content">
-<header style="background:<?php echo esc_attr(get_option( 'headerBackgroundColor' )) ?>;" class="offer_header">
+<header style="background:<?php echo esc_attr(get_option( 'JobPassHeaderBackgroundColor' )) ?>;" class="offer_header">
   <div class="container">
     <div class="row justify-content-center align-items-center py-5 ">
       <div class="col-md-8">
@@ -44,8 +44,8 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
             </ul>
       </div>
       <div class="col-md-4  text-center">
-          <a href="<?php if(get_option('organisationId')) {
-              echo esc_attr( 'https://jobpass.live/' . get_option('organisationId'));}  ?>" 
+          <a href="<?php if(get_option('JobPassOrganisationId')) {
+              echo esc_attr( 'https://jobpass.live/' . get_option('JobPassOrganisationId'));}  ?>" 
           class="btn btnJobPass btn-lg align-items-center"  
           style="display:inline-flex; font-size:16px;"
           target="_blank"
@@ -62,7 +62,7 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
     <div class="row justify-content-center">
         <div class="col-md-8" style="margin: 30px 0;">
             <?php the_content()?>
-            <?php  if(get_option('allowCredits')){?>
+            <?php  if(get_option('JobPassAllowCredits')){?>
               <p style="margin-top: 30px;">
             <small>Powered by <a href="https://jobpass.com" target="_blank">JobPass</a></small>
             </p>
@@ -70,9 +70,9 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
         </div>
         <aside class="col-md-4 jp-company">
           <div class="card" style="max-height: 100%; height: auto; margin: 30px 0; ">
-            <h3>À propos de <?php echo esc_html(get_option('companyName'));?></h3>
+            <h3>À propos de <?php echo esc_html(get_option('JobPassCompanyName'));?></h3>
             <p>
-              <?php echo stripslashes(esc_html(get_option('companyDescription')));?>
+              <?php echo stripslashes(esc_html(get_option('JobPassCompanyDescription')));?>
             </p>
             </div>
         </aside>
@@ -82,14 +82,14 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
 </div> 
 <style>
     h1 {
-      color: <?php echo esc_attr(get_option('mainTitle')) ?> !important;
+      color: <?php echo esc_attr(get_option('JobPassMainTitle')) ?> !important;
     }
 
     h2, h3, h4, h5, h6 {
-      color: <?php echo esc_attr(get_option('fontTitleColor')) ?> !important;
+      color: <?php echo esc_attr(get_option('JobPassFontTitleColor')) ?> !important;
     }
-    .jp_offer-metas {
-      color: <?php echo esc_attr(get_option('jobOffersData')) ?> !important;
+    .jp_offer-metas li {
+      color: <?php echo esc_attr(get_option('JobPassOffersData')) ?> !important;
     }
 </style>
 <?php 
@@ -106,7 +106,7 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
       "description" : "<?php echo wp_strip_all_tags( esc_attr( esc_attr($jp_offer_content) ))?>",
       "identifier": {
         "@type": "PropertyValue",
-        "name": "<?php echo get_option('companyName') ?>",
+        "name": "<?php echo esc_html(get_option('JobPassCompanyName')) ?>",
         "value": "<?php the_ID() ?>"
       },
       "datePosted" : "<?php echo esc_attr(get_the_date('Y/m/d g:ia')) ?>",
@@ -114,7 +114,7 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
       "employmentType" : "<?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?>",
       "hiringOrganization" : {
         "@type" : "Organization",
-        "name" : "<?php echo esc_attr(get_option('companyName')) ?>",
+        "name" : "<?php echo esc_attr(get_option('JobPassCompanyName')) ?>",
         "sameAs" : "<?php echo esc_attr(get_site_url()) ?>",
         "logo" : "<?php echo esc_attr($jp_company_image[0]) ?>"
       },
