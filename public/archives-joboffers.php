@@ -62,7 +62,7 @@ do_action('jobpass-style');
     <?php   endwhile; 
         else: ?>
             <h3 class="text-center">
-                <i class="fas fa-times-circle" style="color:#0F0649"></i><br/>
+                <i class="fas fa-times-circle" style="color:<?php echo esc_attr('JobPassTitleColor') ?>"></i><br/>
                 Aucune offre d'emploi disponible pour le moment
             </h3>
         <?php

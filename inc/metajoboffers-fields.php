@@ -22,7 +22,7 @@ add_action( 'add_meta_boxes', 'jobpass_offer_meta_box' );
 
 
 
-function hcf_save_meta_box( $post_id ) {
+function jobpass_save_meta_box( $post_id ) {
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
     if ( $parent_id = wp_is_post_revision( $post_id ) ) {
         $post_id = $parent_id;
@@ -45,5 +45,5 @@ function hcf_save_meta_box( $post_id ) {
         }
      }
 }
-add_action( 'save_post', 'hcf_save_meta_box' );
+add_action( 'save_post', 'jobpass_save_meta_box' );
 
