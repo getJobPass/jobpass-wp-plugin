@@ -64,3 +64,4 @@ Une fois terminée, vous pouvez enregistrer, prévisualiser le rendu et publier 
 
 == Changelog ==
 v1.0.0 : First release 🚀
+V1.0.1 : bug fixes and improvements
