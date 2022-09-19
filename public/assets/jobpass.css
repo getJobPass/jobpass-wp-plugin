@@ -91,7 +91,6 @@
 }
 .jobpass-content a {
   text-decoration: none !important;
-  color: #6b7280 !important;
 }
 
 .container {
@@ -329,4 +328,12 @@ a.btnJobPass:hover {
 }
 .jp_offer-metas li i {
   margin-right: 2px;
+}
+
+.jp-search-input {
+  margin-bottom: 0 !important;
+}
+
+.job_offers_list {
+  margin: 30px 0;
 }

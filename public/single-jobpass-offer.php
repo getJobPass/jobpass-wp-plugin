@@ -51,7 +51,7 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
           target="_blank"
           data-sid="<?php if(get_option('jobpassIdKey') ) { echo esc_attr(get_option('jobpassIdKey'));} ?>"
           >
-        <img src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/jobpass-icon.svg' )?>" width="30px" style="margin-right:5px" />
+        <img src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/jobpass-icon.svg' )?>" width="30px" style="margin-right:5px; max-height: 35px" />
           Postuler avec JobPass</a>
       </div>
     </div>

@@ -19,7 +19,7 @@ do_action('jobpass-style');
                     <form role="search" action="<?php echo esc_attr(site_url('/')); ?>" method="get" id="searchform">
                     <div class="row align-items-center justify-content-center" style="margin: 0 auto;">
                     <div class="col-md-8">
-                        <input type="text" name="s" placeholder="Rechercher une offre d'emploi" class="search-input"/>
+                        <input type="text" name="s" placeholder="Rechercher une offre d'emploi" class="jp-search-input"/>
                     </div>
                     <div class="col-md-3">
                         <input type="hidden" name="post_type" value="joboffers" /> <!-- // hidden 'products' value -->
@@ -125,7 +125,7 @@ do_action('jobpass-style');
     }
     .btn-show {
         background-color: <?php echo esc_attr(get_option('JobPassMainTitle'))?>;
-        color: <?php echo esc_attr(get_option( 'JobPassHeaderBackgroundColor' )) ?>;
+        color: <?php echo esc_attr(get_option( 'JobPassHeaderBackgroundColor' )) ?> !important;
         border-radius: 8px;
         
     }
@@ -139,6 +139,7 @@ do_action('jobpass-style');
         border-radius: 8px !important;
         padding: 10px 20px !important; 
         width: 100%;
+        color: #fff !important;
 
     }
 </style>
