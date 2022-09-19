@@ -152,8 +152,7 @@ function jobpass_display_form() {
         <style>
 
         </style>
-		<script id="ze-snippet"src="https://static.zdassets.com/ekr/snippet.js?key=2c6362e5-111f-4c7b-a3df-f604fd35decb"></script>
-
+		<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/25126081.js"></script>
         '
         ;
 }
