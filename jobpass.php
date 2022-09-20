@@ -5,7 +5,7 @@
   Description: Ne recevez que des candidatures complètes et optimisez vos recrutements en permettant à vos candidats de postuler en un clic depuis votre site web ou votre point de vente !
   Author: JobPass
   Author URI: https://jobpass.com
-  Version: 1.0.0
+  Version: 1.0.3
   License: GPL v2 or later
   License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */

@@ -3,7 +3,7 @@ Contributors: jobpass, paulefizelier
 Tags: jobs, career, hiring, HR, job manager, job search, job offers
 Tested up to: 6.0.2
 Requires PHP: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,5 +63,7 @@ Une fois terminée, vous pouvez enregistrer, prévisualiser le rendu et publier 
 2. Offre d'emploi JobPass
 
 == Changelog ==
-v1.0.0 : First release 🚀
-V1.0.1 : bug fixes and improvements
+- v1.0.0 : First release 🚀
+- v1.0.1 : bug fixes and improvements
+- v1.0.2 : Fix css problems
+- v1.0.3 : Add support links to plugin

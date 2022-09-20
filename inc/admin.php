@@ -64,6 +64,7 @@ function jobpass_display_form() {
 					<li><span class="fa-li"><i class="fas fa-bullhorn"></i></span> Diffuser vos offres d\'emploi</li>
 					<li><span class="fa-li"><i class="fas fa-trophy"></i></span> Recruter plus rapidement</li>
 				</ul>
+				<p><strong>Besoin d\'aide dans la configuration du plugin ?</strong><a href="https://support.jobpass.com/installer-configurer-lextension-jobpass-pour-wordpress" target="_blank">Consultez notre centre d\'aide !</a></p>
 			</div>
             
             <form method="post" action="" id="jobpass_options"  accept-charset="utf-8">
@@ -152,9 +153,8 @@ function jobpass_display_form() {
         <style>
 
         </style>
-		<script id="ze-snippet"src="https://static.zdassets.com/ekr/snippet.js?key=2c6362e5-111f-4c7b-a3df-f604fd35decb"></script>
-
-        '
+		<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/25126081.js"></script>
+		'
         ;
 }
 
