@@ -332,6 +332,12 @@ a.btnJobPass:hover {
 
 .jp-search-input {
   margin-bottom: 0 !important;
+<<<<<<< Updated upstream
+=======
+  width: 100%;
+  padding: 10px !important;
+  border-radius: 8px;
+>>>>>>> Stashed changes
 }
 
 .job_offers_list {

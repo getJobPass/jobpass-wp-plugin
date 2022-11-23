@@ -3,15 +3,7 @@ defined( 'ABSPATH' ) or die( 'Hack me not' );
 
 add_action( 'admin_menu', 'jobpass_settings' );
 function jobpass_settings() {
-	add_menu_page(
-		"JobPass",
-		"JobPass",
-		'manage_options',
-		"jobpass",
-		'jobpass_config_page', 
-		plugin_dir_url( __FILE__ ) . 'images/icone-jobpass_square.jpg',
-		5,
-	);
+	add_menu_page("JobPass","JobPass",'manage_options',"jobpass",'jobpass_config_page', plugin_dir_url( __FILE__ ) . 'images/icone-jobpass_square.jpg',5,);
 
 	add_submenu_page(
         'jobpass',
