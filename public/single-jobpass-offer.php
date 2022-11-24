@@ -108,6 +108,24 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
             </div>
         </div>
     </section>
+    <section>
+        <?php 
+          $joboffers = array(
+            'post_type' => 'joboffers',
+            'posts_per_page' => '3',
+            'orderby' => 'rand'
+          );
+
+          $other_jobs = new WP_Query($joboffers);            
+        ?>
+        <div class=container>
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 <style>
 h1 {

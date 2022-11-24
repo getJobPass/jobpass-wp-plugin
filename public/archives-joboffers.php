@@ -80,29 +80,21 @@ do_action('jobpass-style');
                 <div class="col-md-12">
                     <?php
   if(get_option('JobPassSpontaneousApplication')){?>
-                    <h2 class="text-center">Candidature spontanée</h2>
-                    <p class="text-center">
+                    <h2 class="text-center" style="margin-bottom:20px">Candidature spontanée</h2>
+                    <p class="text-center" style="margin-bottom: 20px">
                         <?php echo stripslashes(esc_html(get_option('JobPassSpontaneousDescription')));?></p>
                     <?php } ?>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="https://jobpass.live/<?php echo esc_attr(get_option('JobPassOrganisationId')) ?>"
-                        target="_blank" style="
-        padding: 3px 12px;
-        font-weight: bold;
-        display: flex;
-        background-color: #0f0649;
-        align-items: center;
-        justify-content: center;
-        color: #fff !important;
-        border-radius: 8px;
-        text-decoration: none;
-        max-width:300px;
-        margin: 0 auto;
-      "><img src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/jobpass-icon.svg' )?>"
-                            style="width: 40px; margin-right: 20px" />Postuler spontanément</a>
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <a href=" https://jobpass.live/<?php echo esc_attr(get_option('JobPassOrganisationId')) ?>"
+                        target="_blank" class="btn btnJobPass btn-lg align-items-center" style="display:inline-flex; ">
+                        Déposer mon
+
+                        <img src=" <?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/logo-jobpass-white.svg' )?>"
+                            width="70px" style="margin-left:5px; " />
+                    </a>
                 </div>
             </div>
         </div>
