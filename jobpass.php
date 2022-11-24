@@ -38,23 +38,23 @@ function jobpass_add_script_wp_footer() {
 
     if( get_option( 'jobpassIdKey' )) {
     ?>
-        <script type="text/javascript">
-            var el = document.createElement('script');
-            el.setAttribute('src', 'https://cdn.jobpass.com/jobtag.js');
-            el.setAttribute('type', 'text/javascript');
-            el.setAttribute('async', true);
-            el.setAttribute('data-sid', '<?php echo esc_attr(get_option( "jobpassIdKey" )); ?>');
-            if (document.body !== null) {
-                document.body.appendChild(el);
-            }
-        </script>
-    <?php
+<script type="text/javascript">
+var el = document.createElement('script');
+el.setAttribute('src', 'https://cdn.jobpass.com/jobtag.js');
+el.setAttribute('type', 'text/javascript');
+el.setAttribute('async', true);
+el.setAttribute('data-sid', '<?php echo esc_attr(get_option( "jobpassIdKey" )); ?>');
+if (document.body !== null) {
+    document.body.appendChild(el);
+}
+</script>
+<?php
     } else {
 	    ?>
-        <script type="text/javascript">
-            console.log("JobPass : JobTag cannot be found")
-        </script>
-	    <?php
+<script type="text/javascript">
+console.log("JobPass : JobTag cannot be found")
+</script>
+<?php
     }
 }
 function jobpass_joboffers_post_type() {
@@ -136,4 +136,3 @@ function jobpass_template_chooser($jobpass_template)
   return $jobpass_template;   
 }
 add_filter('template_include', 'jobpass_template_chooser');    
-

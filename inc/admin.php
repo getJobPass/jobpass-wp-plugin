@@ -155,9 +155,10 @@ function jobpass_handle_form() {
 		! isset( $_POST['jobpass_form'] ) ||
 		! wp_verify_nonce( $_POST['jobpass_form'], 'jobpass_update' )
 	) { ?>
-        <div class="error">
-            <p><?php echo __( 'Sorry, an error occured. Please try again. Contact us if the problem persist.', 'jobpass' ); ?></p>
-        </div> <?php
+<div class="error">
+    <p><?php echo __( 'Sorry, an error occured. Please try again. Contact us if the problem persist.', 'jobpass' ); ?>
+    </p>
+</div> <?php
 		exit;
 	} else {
 		// Handle our form data
@@ -166,7 +167,7 @@ function jobpass_handle_form() {
 			update_option('JobPassOrganisationId', sanitize_text_field( $_POST['JobPassOrganisationId']));
 			?>
 
-		<?php 
+<?php 
 			if( isset($_POST['JobPassHeaderBackgroundColor']) && isset($_POST['JobPassFontTitleColor'])) {
 				update_option('JobPassHeaderBackgroundColor', sanitize_hex_color($_POST['JobPassHeaderBackgroundColor']));
 				update_option('JobPassFontTitleColor', sanitize_hex_color($_POST['JobPassFontTitleColor']));
@@ -174,20 +175,18 @@ function jobpass_handle_form() {
 				update_option('JobPassOffersData', sanitize_hex_color($_POST['JobPassOffersData']));
 			}
 		?>
-		<?php
+<?php
 				if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['JobPassCompanyDescription']) ) {
 					update_option( 'JobPassCompanyName', sanitize_text_field( $_POST['JobPassCompanyName'] ) );
 					update_option('JobPassCompanyDescription',  sanitize_textarea_field($_POST['JobPassCompanyDescription']));
 				}
 		?>
-		<?php
+<?php
 				if ( isset( $_POST['JobPassSpontaneousDescription'] ) ) {
 					update_option('JobPassSpontaneousDescription',  sanitize_textarea_field($_POST['JobPassSpontaneousDescription']));
 				}
 		?>
-		
-
-		<?php 
+<?php 
 			$JobPassAllowSpontaneous = sanitize_key($_POST['JobPassSpontaneousApplication']) ? sanitize_key($_POST['JobPassSpontaneousApplication']) : '';
 			update_option('JobPassSpontaneousApplication',sanitize_key($JobPassAllowSpontaneous ));
 
@@ -195,8 +194,7 @@ function jobpass_handle_form() {
 			update_option('JobPassAllowCredits',sanitize_key($JobPassAllowCredits))
 			
 		?>
-
-		<?php 
+<?php 
 				$jobpass_content = '';
 				if (isset($_POST) && !empty($_POST)) {
 					if (isset($_POST['submit']) && $_POST['submit'] != '') {
@@ -206,16 +204,16 @@ function jobpass_handle_form() {
 				$jobpass_editor_id = 'jobpass_editor';
 		?>
 
-            <div class="notice notice-success is-dismissible">
-                <p><?php echo __( 'Vos paramètres ont été sauvegardés', 'jobpass' ); ?></p>
-            </div>
-			<?php
+<div class="notice notice-success is-dismissible">
+    <p><?php echo __( 'Vos paramètres ont été sauvegardés', 'jobpass' ); ?></p>
+</div>
+<?php
 		} else {
 			?>
-            <div class="notice notice-error is-dismissible">
-                <p><?php echo __( 'Désolé, vos paramètres n\'ont pas pu être sauvegardés', 'jobpass' ); ?></p>
-            </div>
-			<?php
+<div class="notice notice-error is-dismissible">
+    <p><?php echo __( 'Désolé, vos paramètres n\'ont pas pu être sauvegardés', 'jobpass' ); ?></p>
+</div>
+<?php
 		}
 	}
 }

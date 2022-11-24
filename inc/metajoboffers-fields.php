@@ -46,4 +46,3 @@ function jobpass_save_meta_box( $post_id ) {
      }
 }
 add_action( 'save_post', 'jobpass_save_meta_box' );
-

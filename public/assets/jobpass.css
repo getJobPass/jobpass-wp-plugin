@@ -332,14 +332,167 @@ a.btnJobPass:hover {
 
 .jp-search-input {
   margin-bottom: 0 !important;
-<<<<<<< Updated upstream
-=======
-  width: 100%;
-  padding: 10px !important;
+  margin-right: 10px;
+  width: 95%;
+  padding: 15px !important;
   border-radius: 8px;
->>>>>>> Stashed changes
+  border: none;
 }
 
 .job_offers_list {
   margin: 30px 0;
+}
+.toplevel_page_jobpass #wpcontent {
+  padding-left: 0;
+}
+.toplevel_page_jobpass .wrap {
+  margin: 20px;
+  border-radius: 8px;
+}
+
+.jobpassDiv,
+.jobpassIntroduction {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.jobpassDiv {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  margin-bottom: 2rem;
+}
+.jobpassIntroduction {
+  background: #eff9ff;
+  border-radius: 8px;
+  margin: 0 0 25px 0;
+  font-size: 17px;
+  line-height: 25px;
+}
+.jobpassDiv label {
+  display: block;
+  margin: 0 0 20px;
+}
+.jobpassDiv input {
+  border: 1px solid #aaa;
+  background: #f7f7f7;
+}
+.jp_error,
+.jp_success {
+  margin: 10px 0px;
+  padding: 4px 20px;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+  max-width: 100%;
+}
+.jp_error p,
+.jp_success p {
+  margin: 3px 0;
+  padding: 2px;
+}
+.jp_success {
+  color: #7fc03f;
+  background-color: #dff2bf;
+  border-left-color: #7fc03f;
+}
+.jp_error {
+  color: #c03f3f;
+  background-color: #ffd2d2;
+  border-left-color: #c03f3f;
+}
+.toplevel_page_jobpass h1 {
+  color: #0f0649;
+  font-weight: 700;
+}
+.clear_blue {
+  color: #7bc6e8;
+}
+
+.row {
+  --jp-gutter-x: 1.5rem;
+  --jp-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--jp-gutter-y) * -1);
+  margin-right: calc(var(--jp-gutter-x) / -2);
+  margin-left: calc(var(--jp-gutter-x) / -2);
+}
+
+.row.jp_header {
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 30px;
+  padding: 10px 20px;
+  background-color: #fff;
+  z-index: 1;
+  box-shadow: 0 0.6rem 3rem rgba(15, 6, 73, 0.175);
+}
+.jp_header h1 {
+  display: flex;
+  align-items: center;
+  font-weight: 700 !important;
+  font-size: 1.5rem;
+}
+
+.jp_header h1 svg {
+  margin-right: 30px;
+}
+
+.jobpassBtn {
+  padding: 10px 20px !important;
+  background-color: #0f0649 !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+}
+
+.jobpassbtn:hover {
+  background-color: #7bc6e8 !important;
+  color: #fff !important !important;
+  transition: 0.5s all !important;
+  -webkit-transition: 0.5s all !important;
+  -moz-transition: 0.5s all !important;
+  -o-transition: 0.5s all !important;
+}
+
+.mr-5 {
+  margin-right: 3rem;
+  min-width: 300px;
+  display: inline-flex;
+}
+
+.jp_logo-container {
+  display: flex;
+  align-items: center;
+}
+.jp_logo-container svg {
+  margin-right: 30px;
+}
+
+.jp_intro {
+  background-color: #eff9ff;
+}
+.jp_intro h2 {
+  color: #0f0649;
+  line-height: 1.5;
+}
+
+.jp_intro ul {
+  font-size: 16px;
+}
+.jp_intro li {
+  margin-bottom: 10px;
+}
+
+.jp_intro .fa-li {
+  width: unset;
+  font-size: 18px;
+  color: #0f0649;
+}
+
+.job_offers_list {
+  justify-content: center;
 }
