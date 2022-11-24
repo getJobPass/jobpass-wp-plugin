@@ -93,8 +93,11 @@
   text-decoration: none !important;
 }
 
+.justify-content-center  {
+  justify-content: center !important;
+}
 .container {
-  width: 100%;
+  /* width: 100%; */
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
@@ -106,6 +109,7 @@
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  max-width: 100%;
 }
 
 .align-items-center {
@@ -191,6 +195,10 @@ a.btnJobPass:hover {
   .col-md-8 {
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
+  }
+  .col-md-7 {
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
   }
   .col-md-4 {
     flex: 0 0 33.333333%;
@@ -319,12 +327,14 @@ a.btnJobPass:hover {
   list-style: none;
   padding-left: 0;
   padding-inline-start: 0;
+  flex-wrap: wrap;
 }
 
 .jp_offer-metas li {
   margin-left: 0;
   margin-right: 1.5rem;
   font-size: 1rem;
+  margin-bottom: 10px;
 }
 .jp_offer-metas li i {
   margin-right: 2px;
@@ -408,16 +418,6 @@ a.btnJobPass:hover {
   color: #7bc6e8;
 }
 
-.row {
-  --jp-gutter-x: 1.5rem;
-  --jp-gutter-y: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: calc(var(--jp-gutter-y) * -1);
-  margin-right: calc(var(--jp-gutter-x) / -2);
-  margin-left: calc(var(--jp-gutter-x) / -2);
-}
-
 .row.jp_header {
   justify-content: space-between;
   align-items: center;
@@ -494,5 +494,10 @@ a.btnJobPass:hover {
 }
 
 .job_offers_list {
+  justify-content: center;
+}
+
+.JpOfferContent {
+  display: flex;
   justify-content: center;
 }

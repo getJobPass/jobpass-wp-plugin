@@ -36,37 +36,60 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
                             offres</span></a>
                     <h1><?php the_title(); ?></h1>
                     <ul class="jp_offer-metas">
+                        <?php if( get_post_meta( get_the_ID(), 'jp_place', true ) ) {?>
                         <li><i class="fas fa-map-marker"></i>
-                            <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_place', true ) ); ?></li>
+                            <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_place', true ) ); ?>
+                        </li>
+                        <?php } 
+                          if (get_post_meta($post -> ID, 'jp_startDate', true)) {
+                        ?>
                         <li><i class="fas fa-calendar-alt"></i> <?php echo esc_attr(date('j/m/Y', $formatted_date)) ?>
                         </li>
+                        <?php }  
+                        if(get_post_meta( get_the_ID(), 'jp_contract', true )) {?>
+
                         <li><i class="fas fa-briefcase"></i>
-                            <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?></li>
+                            <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_contract', true ) ); ?>
+                        </li>
+                        <?php } 
+                          if (get_post_meta(get_the_ID(), 'jp_remote', true)) {
+                        ?>
                         <li><i class="fas fa-house-user"></i>
-                            <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_remote', true ) ); ?></li>
+                            <?php echo esc_attr(get_post_meta(get_the_ID(), 'jp_remote', true)); ?>
+                        </li>
+                        <?php } 
+                          if(get_post_meta(get_the_ID(), 'jp_salary', true)) {
+                        ?>
                         <li><i class="fas fa-euro-sign"></i>
-                            <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_salary', true ) ); ?></li>
+                            <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_salary', true ) ); ?>
+                        </li>
+                        <?php } 
+                          if (get_post_meta(get_the_ID(), 'jp_experience', true)) {
+                        ?>
                         <li><i class="fas fa-user-tie"></i>
-                            <?php echo esc_attr( get_post_meta( get_the_ID(), 'jp_experience', true ) ); ?></li>
+                            <?php echo esc_attr(get_post_meta(get_the_ID(), 'jp_experience', true)); ?>
+                        </li>
+                        <?php } ?>
                     </ul>
                 </div>
-                <div class="col-md-4  text-center">
+                <div class="col-md-3  text-center">
                     <a href="<?php if(get_option('JobPassOrganisationId')) {
               echo esc_attr( 'https://jobpass.live/' . get_option('JobPassOrganisationId'));}  ?>"
                         class="btn btnJobPass btn-lg align-items-center" style="display:inline-flex; font-size:16px;"
                         target="_blank"
                         data-sid="<?php if(get_option('jobpassIdKey') ) { echo esc_attr(get_option('jobpassIdKey'));} ?>">
-                        <img src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/jobpass-icon.svg' )?>"
-                            width="30px" style="margin-right:5px; max-height: 35px" />
-                        Postuler avec JobPass</a>
+                        Postuler avec
+                        <img src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/logo-jobpass-white.svg' )?>"
+                            width="70px" style="margin-left:5px; " />
+                    </a>
                 </div>
             </div>
         </div>
     </header>
     <section id="jp_content-offer" style="margin: 30px 0 !important;">
-        <div class="container">
+        <div class="container JpOfferContent">
             <div class="row justify-content-center">
-                <div class="col-md-8" style="margin: 30px 0;">
+                <div class="col-md-7" style="margin: 30px 0;">
                     <?php the_content()?>
                     <?php  if(get_option('JobPassAllowCredits')){?>
                     <p style="margin-top: 30px;">
