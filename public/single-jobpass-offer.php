@@ -193,6 +193,32 @@ h6 {
 }
 </script>
 
+
+
 <?
+ add_action('wp_footer', 'jobpass_add_script_wp_footer');
+ function jobpass_add_script_wp_footer()
+ {
+     if (get_option('jobpassIdKey')) {
+         ?>
+<script type="text/javascript">
+var el = document.createElement('script');
+el.setAttribute('src', 'https://cdn.jobpass.com/jobtag.js');
+el.setAttribute('type', 'text/javascript');
+el.setAttribute('async', true);
+el.setAttribute('data-sid', '<?php echo esc_attr(get_option("jobpassIdKey")); ?>');
+if (document.body !== null) {
+    document.body.appendChild(el);
+}
+</script>
+<?php
+     } else {
+         ?>
+<script type="text/javascript">
+console.log("JobPass : JobTag cannot be found")
+</script>
+<?php
+     }
+ }
   get_footer();
 ?>
