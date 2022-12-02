@@ -13,7 +13,7 @@ $jp_start_date = get_post_meta($post -> ID, 'jp_startDate', true);
 $formatted_date = strtotime($jp_start_date);
 
 $jp_validTrough = get_post_meta($post -> ID, 'jp_validThrough', true);
-$formatted_validTrough = strtotime($formatted_validTrough); 
+$formatted_validTrough = strtotime($jp_validTrough); 
 
 function jobpass_get_organisation_id() {
   if (get_option( 'JobPassOrganisationId' )) {

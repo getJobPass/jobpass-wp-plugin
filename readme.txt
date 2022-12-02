@@ -3,11 +3,11 @@ Contributors: jobpass, paulefizelier
 Tags: jobs, career, hiring, HR, job manager, job search, job offers
 Tested up to: 6.0.2
 Requires PHP: 7.0
-Stable tag: 1.0.3
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Publiez vos offres d'emploi sur votre site web et permettez à vos candidats d'envoyer leur dossier de candidature complet en 1 clic grâace à JobPass !
+Publiez vos offres d'emploi sur votre site web et permettez à vos candidats d'envoyer leur dossier de candidature complet en 1 clic grâce à JobPass !
 
 == Description ==
 L'extension [JobPass](https://jobpass.com) vous permet de configurer vos récepteurs de candidatures sur votre site web rapidement et facilement. 
@@ -67,3 +67,6 @@ Une fois terminée, vous pouvez enregistrer, prévisualiser le rendu et publier 
 - v1.0.1 : bug fixes and improvements
 - v1.0.2 : Fix css problems
 - v1.0.3 : Add support links to plugin
+- v1.0.4 : Fix bugs
+- v1.0.5 : Fix variables
+- v1.0.6 : Fix logos
