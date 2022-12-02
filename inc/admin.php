@@ -195,15 +195,7 @@ function jobpass_display_form() {
 		<h2>Présentation de l\'entreprise</h2>
 		<input type="hidden" name="updated" value="true" />
 		' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
-		<label>
-		  <span>Nom de votre entreprise</span>
-		  <br />
-		  <input
-			type="text"
-			name="JobPassCompanyName"
-			value="' . get_option( 'JobPassCompanyName' ) . '"
-		  />
-		</label>
+		
 		<label>
 		  <span>Description de votre entreprise</span>
 		  <br />

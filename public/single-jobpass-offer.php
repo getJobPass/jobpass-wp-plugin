@@ -99,7 +99,7 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
                 </div>
                 <aside class="col-md-4 jp-company">
                     <div class="card" style="max-height: 100%; height: auto; margin: 30px 0; ">
-                        <h3>À propos de <?php echo esc_html(get_option('JobPassCompanyName'));?></h3>
+                        <h3>À propos de <?php echo esc_html(get_bloginfo());?></h3>
                         <p>
                             <?php echo stripslashes(esc_html(get_option('JobPassCompanyDescription')));?>
                         </p>
