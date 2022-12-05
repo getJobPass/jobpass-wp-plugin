@@ -146,45 +146,49 @@ function jobpass_display_form() {
 		<input type="hidden" name="updated" value="true" />
 		' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
 		<label>
-		  <span class="mr-5">' . __( 'Couleur de fond', 'jobpass' ) . '</span>
-  
+		  <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur de fond', 'jobpass' ) . ' </strong></span>' . '
 		  <input
-			type="color"
+			type="text"
+			class="color-picker"
+			data-alpha-enabled="false"
+			data-default-color="#EFF9FF"
 			name="JobPassHeaderBackgroundColor"
-			value="' . get_option( 'JobPassHeaderBackgroundColor' ) . '"
+			value="' .  esc_attr( get_option( 'JobPassHeaderBackgroundColor', '#EFF9FF'  ) ) . '"
 		  />
-		</label>
-		<label>
-		  <span class="mr-5"
-			>' . __('Couleur du titre principal', 'jobpass' ) . '
-		  </span>
-  
+		  </label>
+		  <label>
+		  <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur du titre principal', 'jobpass' ) . ' </strong></span>' . '
 		  <input
-			type="color"
+			type="text"
+			class="color-picker"
+			data-alpha-enabled="false"
+			data-default-color="#0F0649"
 			name="JobPassMainTitle"
-			value="'. get_option( 'JobPassMainTitle' ) . '"
+			value="' .  esc_attr( get_option( 'JobPassMainTitle', '#0F0649'  ) ) . '"
 		  />
-		</label>
-		<label>
-		  <span class="mr-5">' . __('Couleur des titres', 'jobpass' ) . ' </span>
-  
+		  </label>
+		  <label>
+		  <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur des titres', 'jobpass' ) . ' </strong></span>' . '
 		  <input
-			type="color"
+			type="text"
+			class="color-picker"
+			data-alpha-enabled="false"
+			data-default-color="#0F0649"
 			name="JobPassFontTitleColor"
-			value="'. get_option( 'JobPassFontTitleColor' ) . '"
+			value="' .  esc_attr( get_option( 'JobPassFontTitleColor', '#0F0649'  ) ) . '"
 		  />
-		</label>
-		<label>
-		  <span class="mr-5"
-			>' . __('Couleur des données de l\'offre', 'jobpass' ) . '
-		  </span>
-  
+		  </label>
+		  <label>
+		  <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur des données de l\'offre', 'jobpass' ) . ' </strong></span>' . '
 		  <input
-			type="color"
+			type="text"
+			class="color-picker"
+			data-alpha-enabled="false"
+			data-default-color="#6B7280"
 			name="JobPassOffersData"
-			value="'. get_option( 'JobPassOffersData' ) . '"
+			value="' .  esc_attr( get_option( 'JobPassOffersData', '#6B7280'  ) ) . '"
 		  />
-		</label>
+		  </label>
 		<input
 		  class="button button-primary"
 		  type="submit"
@@ -251,6 +255,7 @@ function jobpass_handle_form() {
 				update_option('JobPassMainTitle', sanitize_hex_color($_POST['JobPassMainTitle']));
 				update_option('JobPassOffersData', sanitize_hex_color($_POST['JobPassOffersData']));
 			}
+			
 		?>
 <?php
 				if ( isset( $_POST['jobpassIdKey'] ) && isset( $_POST['JobPassCompanyDescription']) ) {
@@ -314,3 +319,11 @@ function jobpass_load_admin_style() {
     wp_enqueue_style( 'admin_css', plugin_dir_url(__FILE__). 'style/style.css', false, '1.0.0' );
 	wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 }
+
+function jp_color_picker($hook) {
+    
+    wp_enqueue_style( 'wp-color-picker' );
+    wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '/js/wp-color-picker-alpha.min.js',  __FILE__ ), array( 'wp-color-picker' ), '3.0.0', true );
+    wp_enqueue_script( 'wp-color-picker-init',  plugins_url( '/js/wp-color-picker-init.js',  __FILE__ ), array( 'wp-color-picker-alpha' ), '3.0.0', true );
+}
+add_action( 'admin_enqueue_scripts',  'jp_color_picker' );
