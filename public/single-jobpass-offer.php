@@ -90,6 +90,32 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
         <div class="container JpOfferContent">
             <div class="row justify-content-center">
                 <div class="col-md-7" style="margin: 30px 0;">
+                    <ul style="margin-top:20px" class="JpShare">
+                        <li>Partagez cette offre : </li>
+
+                        <li>
+                            <a href=" https://www.facebook.com/sharer/sharer.php?u=<?php echo get_post_permalink(); ?>"
+                                target="_blank"><i class=" fab fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/intent/tweet/?url=<?php echo get_post_permalink(); ?>&text=Offre d'emploi : <?php echo the_title() ?>"
+                                target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo get_post_permalink(); ?>"
+                                target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:?subject=Offre d'emploi : <?php echo the_title()?>&body=Découvrez cette offre d'emploi : <?php echo get_post_permalink(); ?>"
+                                target="_blank">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </li>
+                    </ul>
                     <?php the_content()?>
                     <?php  if(get_option('JobPassAllowCredits')){?>
                     <p style="margin-top: 30px;">
@@ -140,8 +166,13 @@ h6 {
     color: <?php echo esc_attr(get_option('JobPassFontTitleColor')) ?> !important;
 }
 
-.jp_offer-metas li {
+.jp_offer-metas li,
+.JpShare li {
     color: <?php echo esc_attr(get_option('JobPassOffersData')) ?> !important;
+}
+
+.JpShare li a {
+    color: <?php echo esc_attr(get_option('JobPassMainTitle')) ?> !important;
 }
 </style>
 <?php 
