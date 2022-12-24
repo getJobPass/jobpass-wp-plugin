@@ -21,6 +21,14 @@ function jobpass_settings() {
         'post-new.php?post_type=joboffers',//menu slug
         
     );
+	add_submenu_page(
+        'jobpass',
+        'Établissements', //page title
+        'Établissements', //menu title
+        'manage_options', //capability,
+        'edit-tags.php?taxonomy=etablissements&post_type=joboffers',
+        
+    );
 }
 
 function jobpass_config_page() {
