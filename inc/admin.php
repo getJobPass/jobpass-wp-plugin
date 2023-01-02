@@ -23,10 +23,10 @@ function jobpass_settings() {
     );
 	add_submenu_page(
         'jobpass',
-        'Établissements', //page title
-        'Établissements', //menu title
+        'Entités', //page title
+        'Entités', //menu title
         'manage_options', //capability,
-        'edit-tags.php?taxonomy=etablissements&post_type=joboffers',
+        'edit-tags.php?taxonomy=entity&post_type=joboffers',
         
     );
 }
