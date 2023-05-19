@@ -79,7 +79,7 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
                         target="_blank"
                         data-sid="<?php if(get_option('jobpassIdKey') ) { echo esc_attr(get_option('jobpassIdKey'));} ?>">
                         Postuler avec
-                        <img src="<?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/logo-jobpass-white.svg' )?>"
+                        <img src="https://images.ctfassets.net/nla4ils4bv6t/01MpLFfhVRnPnYteKTv4o5/22ed578b64b6f66f8e8477e046bed3e3/white-logo-jobpass.svg"
                             width="70px" style="margin-left:5px; " />
                     </a>
                 </div>
@@ -90,32 +90,6 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
         <div class="container JpOfferContent">
             <div class="row justify-content-center">
                 <div class="col-md-7" style="margin: 30px 0;">
-                    <ul style="margin-top:20px" class="JpShare">
-                        <li>Partagez cette offre : </li>
-
-                        <li>
-                            <a href=" https://www.facebook.com/sharer/sharer.php?u=<?php echo get_post_permalink(); ?>"
-                                target="_blank"><i class=" fab fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/intent/tweet/?url=<?php echo get_post_permalink(); ?>&text=Offre d'emploi : <?php echo the_title() ?>"
-                                target="_blank">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo get_post_permalink(); ?>"
-                                target="_blank">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:?subject=Offre d'emploi : <?php echo the_title()?>&body=Découvrez cette offre d'emploi : <?php echo get_post_permalink(); ?>"
-                                target="_blank">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </li>
-                    </ul>
                     <?php the_content()?>
                     <?php  if(get_option('JobPassAllowCredits')){?>
                     <p style="margin-top: 30px;">
@@ -125,7 +99,7 @@ add_action('wp_footer', 'jobpass_get_organisation_id');
                 </div>
                 <aside class="col-md-4 jp-company">
                     <div class="card" style="max-height: 100%; height: auto; margin: 30px 0; ">
-                        <h3>À propos de <?php echo esc_html(get_bloginfo());?></h3>
+                        <h3>À propos de <?php echo esc_html(get_option('JobPassCompanyName'));?></h3>
                         <p>
                             <?php echo stripslashes(esc_html(get_option('JobPassCompanyDescription')));?>
                         </p>
@@ -166,13 +140,8 @@ h6 {
     color: <?php echo esc_attr(get_option('JobPassFontTitleColor')) ?> !important;
 }
 
-.jp_offer-metas li,
-.JpShare li {
+.jp_offer-metas li {
     color: <?php echo esc_attr(get_option('JobPassOffersData')) ?> !important;
-}
-
-.JpShare li a {
-    color: <?php echo esc_attr(get_option('JobPassMainTitle')) ?> !important;
 }
 </style>
 <?php 
@@ -224,32 +193,6 @@ h6 {
 }
 </script>
 
-
-
 <?
- add_action('wp_footer', 'jobpass_add_script_wp_footer');
- function jobpass_add_script_wp_footer()
- {
-     if (get_option('jobpassIdKey')) {
-         ?>
-<script type="text/javascript">
-var el = document.createElement('script');
-el.setAttribute('src', 'https://cdn.jobpass.com/jobtag.js');
-el.setAttribute('type', 'text/javascript');
-el.setAttribute('async', true);
-el.setAttribute('data-sid', '<?php echo esc_attr(get_option("jobpassIdKey")); ?>');
-if (document.body !== null) {
-    document.body.appendChild(el);
-}
-</script>
-<?php
-     } else {
-         ?>
-<script type="text/javascript">
-console.log("JobPass : JobTag cannot be found")
-</script>
-<?php
-     }
- }
   get_footer();
 ?>

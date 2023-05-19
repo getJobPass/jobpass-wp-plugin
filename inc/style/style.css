@@ -57,11 +57,11 @@
   border-left-color: #c03f3f;
 }
 .toplevel_page_jobpass h1 {
-  color: #0f0649;
+  color: #273648;
   font-weight: 700;
 }
 .clear_blue {
-  color: #7bc6e8;
+  color: #3d90cb;
 }
 
 .row {
@@ -97,7 +97,7 @@
 
 .jobpassBtn {
   padding: 10px 20px !important;
-  background-color: #0f0649 !important;
+  background-color: #273648 !important;
   color: #fff !important;
   font-weight: 700 !important;
   font-size: 16px !important;
@@ -106,7 +106,7 @@
 }
 
 .jobpassbtn:hover {
-  background-color: #7bc6e8 !important;
+  background-color: #3d90cb !important;
   color: #fff !important !important;
   transition: 0.5s all !important;
   -webkit-transition: 0.5s all !important;
@@ -132,7 +132,7 @@
   background-color: #eff9ff;
 }
 .jp_intro h2 {
-  color: #0f0649;
+  color: #273648;
   line-height: 1.5;
 }
 
@@ -146,7 +146,7 @@
 .jp_intro .fa-li {
   width: unset;
   font-size: 18px;
-  color: #0f0649;
+  color: #273648;
 }
 
 .job_offers_list {

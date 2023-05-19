@@ -77,7 +77,7 @@ do_action('jobpass-style');
     <section style="margin-bottom:30px; padding-bottom: 30px">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 text-center">
                     <?php
   if(get_option('JobPassSpontaneousApplication')){?>
                     <h2 class="text-center" style="margin-bottom:20px">Candidature spontanée</h2>
@@ -92,7 +92,7 @@ do_action('jobpass-style');
                         target="_blank" class="btn btnJobPass btn-lg align-items-center" style="display:inline-flex; ">
                         Déposer mon
 
-                        <img src=" <?php echo esc_attr( plugin_dir_url(__FILE__) . 'assets/logo-jobpass-white.svg' )?>"
+                        <img src="https://images.ctfassets.net/nla4ils4bv6t/01MpLFfhVRnPnYteKTv4o5/22ed578b64b6f66f8e8477e046bed3e3/white-logo-jobpass.svg"
                             width="70px" style="margin-left:5px; " />
                     </a>
                 </div>
