@@ -5,7 +5,7 @@
   Description: Ce plugin Jobpass pour WordPress vous permet de simplement poster vos offres d'emploi sur votre site et de simplfier vos process de candidatures en permettant à vos candidats de vous partager toutes leurs informations en quelques clics ! Votre recrutement simple, rapide et sécurisé ! 
   Author: JobPass
   Author URI: https://jobpass.com
-  Version: 1.0.6
+  Version: 1.1.0
   License: GPL v2 or later
   License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
