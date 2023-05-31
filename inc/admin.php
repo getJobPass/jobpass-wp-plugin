@@ -21,14 +21,19 @@ function jobpass_settings() {
         'post-new.php?post_type=joboffers',//menu slug
         
     );
-	add_submenu_page(
+	$enable_taxonomy = get_option('JobpassManyEntities'); 
+
+if($enable_taxonomy) {
+
+    add_submenu_page(
         'jobpass',
         'Entités', //page title
         'Entités', //menu title
         'manage_options', //capability,
-        'edit-tags.php?taxonomy=entity&post_type=joboffers',
-        
+        'edit-tags.php?taxonomy=entite&post_type=joboffers',
     );
+}
+
 }
 
 function jobpass_config_page() {
@@ -38,7 +43,19 @@ function jobpass_config_page() {
 	echo jobpass_display_form();
 }
 
+function disable_inputs() {
+	if($enable_taxonomy === 0) {}
+}
+
 function jobpass_display_form() {
+
+	function if_entities() {
+		$enable_entity = get_option('JobpassManyEntities' === 0);
+		if(!$enable_entity) {
+			return 'prout';
+		}
+	}
+
 	return '
 	<div class="row jp_header" style="background-color: #fff">
 	<div class="jp_logo-container">
@@ -139,158 +156,114 @@ function jobpass_display_form() {
 		>
 	  </p>
 	</div>
-  
-	<form method="post" action="" id="jobpass_options" accept-charset="utf-8">
-	  <div class="jobpassDiv">
-		<h2>Informations de connexion</h2>
-		<input type="hidden" name="updated" value="true" />
-		' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
+	
+<form method="post" action="" id="jobpass_options" accept-charset="utf-8">
+    <div class="jobpassDiv">
+        <h2>Informations de connexion</h2>
+        <input type="hidden" name="updated" value="true" />
+        ' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
 		<label>
-		  ' . __( 'Script ID', 'jobpass' ) . '
-		  <br />
-		  <input
-			type="text"
-			name="jobpassIdKey"
-			value="' . get_option( 'jobpassIdKey' ) . '"
-		  />
-		</label>
-		<label>
-		  ' . __( 'Organisation ID', 'jobpass' ) . '
-		  <br />
-		  <input
-			type="text"
-			name="JobpassOrganisationId"
-			value="' . get_option( 'JobpassOrganisationId' ) . '"
-		  />
-		</label>
-		<label>
-		  Autoriser les candidatures spontanées ?
-		  <br />
-		  <input size="76" name="JobpassSpontaneousApplication" type="checkbox"
-		  id="JobpassSpontaneousApplication" ' .
-		  checked((get_option("JobpassSpontaneousApplication")), 1, false) .'
-		  value="1" />
-		</label>
-		<label>
-		  <span>Description candidature spontanée</span>
-		  <br />
-		  <textarea
-			name="JobpassSpontaneousDescription"
-			class="all-options"
-			style="width: 100%"
-			rows="5"
-		  >
-  '. stripslashes(get_option( 'JobpassSpontaneousDescription' )) .  '</textarea
-		  >
-		</label>
-		<label>
-		  Activer les crédits ?
-		  <br />
-		  <input size="76" name="JobpassAllowCredits" type="checkbox"
-		  id="JobpassAllowCredits" ' .
-		  checked((get_option("JobpassAllowCredits")), 1, false) .' value="1" />
-		</label>
-		<input
-		  class="button button-primary"
-		  type="submit"
-		  value="' . __( 'Enregistrer', 'jobpass' ) . '"
-		/>
-	  </div>
-	  <div class="jobpassDiv">
-		<h2>Design de vos offres d\'emploi</h2>
-		<input type="hidden" name="updated" value="true" />
-		' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
-		<label>
-		  <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur de fond', 'jobpass' ) . ' </strong></span>' . '
-		  <input
-			type="text"
-			class="color-picker"
-			data-alpha-enabled="false"
-			data-default-color="#EFF9FF"
-			name="JobpassHeaderBackgroundColor"
-			value="' .  esc_attr( get_option( 'JobpassHeaderBackgroundColor', '#EFF9FF'  ) ) . '"
-		  />
-		  </label>
-		  <label>
-		  <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur du titre principal', 'jobpass' ) . ' </strong></span>' . '
-		  <input
-			type="text"
-			class="color-picker"
-			data-alpha-enabled="false"
-			data-default-color="#0F0649"
-			name="JobpassMainTitle"
-			value="' .  esc_attr( get_option( 'JobpassMainTitle', '#0F0649'  ) ) . '"
-		  />
-		  </label>
-		  <label>
-		  <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur des titres', 'jobpass' ) . ' </strong></span>' . '
-		  <input
-			type="text"
-			class="color-picker"
-			data-alpha-enabled="false"
-			data-default-color="#0F0649"
-			name="JobpassFontTitleColor"
-			value="' .  esc_attr( get_option( 'JobpassFontTitleColor', '#0F0649'  ) ) . '"
-		  />
-		  </label>
-		  <label>
-		  <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur des données de l\'offre', 'jobpass' ) . ' </strong></span>' . '
-		  <input
-			type="text"
-			class="color-picker"
-			data-alpha-enabled="false"
-			data-default-color="#6B7280"
-			name="JobpassOffersData"
-			value="' .  esc_attr( get_option( 'JobpassOffersData', '#6B7280'  ) ) . '"
-		  />
-		  </label>
-		<input
-		  class="button button-primary"
-		  type="submit"
-		  value="' . __( 'Enregistrer', 'jobpass' ) . '"
-		/>
-	  </div>
-	  <div class="jobpassDiv">
-		<h2>Présentation de l\'entreprise</h2>
-		<input type="hidden" name="updated" value="true" />
-		' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
+		Vous avez plusieurs entités sur Jobpass
+		<br />
 		
-		<label>
-		  <span>Description de votre entreprise</span>
-		  <br />
-		  <textarea
-			name="JobpassCompanyDescription"
-			class="all-options"
-			style="width: 100%"
-			rows="5"
-		  >
-  '.stripslashes(get_option( 'JobpassCompanyDescription' )) .'</textarea
-		  >
-		</label>
-		<label> </label>
-		<input
-		  class="button button-primary"
-		  type="submit"
-		  value="' . __( 'Enregistrer', 'jobpass' ) . '"
-		/>
-	  </div>
-	</form>
-  </div>
-  
-  </div>
-		  <style>
+		<input size="76" name="JobpassManyEntities" type="checkbox" id="JobpassManyEntities" ' .
+	  checked((get_option("JobpassManyEntities")), 1, false) .' value="1" />
+	</label>
+        <label>
+            ' . __( 'Script ID', 'jobpass' ) . '
+            <br />
+            <input type="text" name="jobpassIdKey" value="' . get_option( 'jobpassIdKey' ) . '" />
+        </label>
+        <label>
+            ' . __( 'Organisation ID', 'jobpass' ) . '
+            <br />
+            <input type="text" name="JobpassOrganisationId" value="' . get_option( 'JobpassOrganisationId' ) . '" />
+        </label>
+		'. esc_html(if_entities()) .'
+        <label>
+            Autoriser les candidatures spontanées ?
+            <br />
+            <input size="76" name="JobpassSpontaneousApplication" type="checkbox" id="JobpassSpontaneousApplication" ' .
+		  checked((get_option("JobpassSpontaneousApplication")), 1, false) .' value="1" />
+        </label>
+        <label>
+            <span>Ajoutez une accroche pour inciter les potentiels candidats à vous déposer leur candidature spontanée</span>
+            <br />
+            <textarea name="JobpassSpontaneousDescription" class="all-options" style="width: 100%" rows="5">
+  '. stripslashes(get_option( 'JobpassSpontaneousDescription' )) .  '</textarea>
+        </label>
+        <label>
+            Activer les crédits ?
+            <br />
+            <input size="76" name="JobpassAllowCredits" type="checkbox" id="JobpassAllowCredits" ' .
+		  checked((get_option("JobpassAllowCredits")), 1, false) .' value="1" />
+        </label>
+        <input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
+    </div>
+    <div class="jobpassDiv">
+        <h2>Design de vos offres d\'emploi</h2>
+        <input type="hidden" name="updated" value="true" />
+        ' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
+        <label>
+            <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur de fond', 'jobpass' ) . '
+                    </strong></span>' . '
+                <input type="text" class="color-picker" data-alpha-enabled="false" data-default-color="#EFF9FF"
+                    name="JobpassHeaderBackgroundColor"
+                    value="' .  esc_attr( get_option( 'JobpassHeaderBackgroundColor', '#EFF9FF'  ) ) . '" />
+        </label>
+        <label>
+            <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur du titre principal', 'jobpass' ) . '
+                    </strong></span>' . '
+                <input type="text" class="color-picker" data-alpha-enabled="false" data-default-color="#0F0649"
+                    name="JobpassMainTitle" value="' .  esc_attr( get_option( 'JobpassMainTitle', '#0F0649'  ) ) . '" />
+        </label>
+        <label>
+            <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur des titres', 'jobpass' ) . '
+                    </strong></span>' . '
+                <input type="text" class="color-picker" data-alpha-enabled="false" data-default-color="#0F0649"
+                    name="JobpassFontTitleColor"
+                    value="' .  esc_attr( get_option( 'JobpassFontTitleColor', '#0F0649'  ) ) . '" />
+        </label>
+        <label>
+            <span class="mr-5">' .'<span class="mr-5"><strong>' . __('Couleur des données de l\'offre', 'jobpass' ) . '
+                    </strong></span>' . '
+                <input type="text" class="color-picker" data-alpha-enabled="false" data-default-color="#6B7280"
+                    name="JobpassOffersData"
+                    value="' .  esc_attr( get_option( 'JobpassOffersData', '#6B7280'  ) ) . '" />
+        </label>
+        <input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
+    </div>
+    <div class="jobpassDiv">
+        <h2>Présentation de l\'entreprise</h2>
+        <input type="hidden" name="updated" value="true" />
+        ' . wp_nonce_field( 'jobpass_update', 'jobpass_form' ) . '
 
-        </style>
-		<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/25126081.js"></script>
-		'
-        ;
+        <label>
+            <span>Description de votre entreprise</span>
+            <br />
+            <textarea name="JobpassCompanyDescription" class="all-options" style="width: 100%" rows="5">
+  '.stripslashes(get_option( 'JobpassCompanyDescription' )) .'</textarea>
+        </label>
+        <label> </label>
+        <input class="button button-primary" type="submit" value="' . __( 'Enregistrer', 'jobpass' ) . '" />
+    </div>
+</form>
+</div>
+
+</div>
+<style>
+
+</style>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/25126081.js"></script>
+'
+;
 }
 
 function jobpass_handle_form() {
-	if (
-		! isset( $_POST['jobpass_form'] ) ||
-		! wp_verify_nonce( $_POST['jobpass_form'], 'jobpass_update' )
-	) { ?>
+if (
+! isset( $_POST['jobpass_form'] ) ||
+! wp_verify_nonce( $_POST['jobpass_form'], 'jobpass_update' )
+) { ?>
 <div class="error">
     <p><?php echo __( 'Sorry, an error occured. Please try again. Contact us if the problem persist.', 'jobpass' ); ?>
     </p>
@@ -328,8 +301,10 @@ function jobpass_handle_form() {
 			update_option('JobpassSpontaneousApplication',sanitize_key($JobpassAllowSpontaneous ));
 
 			$JobpassAllowCredits = sanitize_key($_POST['JobpassAllowCredits']) ? sanitize_key($_POST['JobpassAllowCredits']) : '';
-			update_option('JobpassAllowCredits',sanitize_key($JobpassAllowCredits))
+			update_option('JobpassAllowCredits',sanitize_key($JobpassAllowCredits));
 			
+			$JobpassManyEntities = sanitize_key($_POST['JobpassManyEntities']) ? sanitize_key($_POST['JobpassManyEntities']) : '';
+			update_option('JobpassManyEntities',sanitize_key($JobpassManyEntities));
 		?>
 <?php 
 				$jobpass_content = '';

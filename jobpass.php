@@ -56,7 +56,41 @@ console.log("JobPass : JobTag cannot be found")
 <?php
     }
 }
+function jobpass_register_entite_taxonomy() {
+
+  $labels = array(
+      'name' => __( 'Entités' ),
+      'singular_name' => __( 'Entité' ),
+      'search_items' => __( 'Rechercher une entité' ),
+      'all_items' => __( 'Toutes les entités' ),
+      'edit_item' => __( 'Modifier l\'entité' ),
+      'update_item' => __( 'Mettre à jour l\'entité' ),
+      'add_new_item' => __( 'Ajouter une nouvelle entité' ),
+      'new_item_name' => __( 'Nom de la nouvelle entité' ),
+      'menu_name' => __( 'Entités' ),
+  );
+
+  register_taxonomy( 'entite', 'joboffers', array(
+      'hierarchical' => true,
+      'labels' => $labels,
+      'rewrite' => array( 'slug' => 'entite' ),
+      'show_admin_column' => true,
+      'show_in_rest' => true,
+  ));
+}
+add_action( 'init', 'jobpass_register_entite_taxonomy' );
+
+
 function jobpass_joboffers_post_type() {
+  $enable_taxonomy = get_option('JobpassManyEntities');
+
+
+  $enable_taxonomy = get_option('JobpassManyEntities'); 
+  $taxonomies = array(); //
+if($enable_taxonomy) {
+    $taxonomies[]= 'entite';
+}
+
 	register_post_type( 'joboffers',
 		array(
 			'labels' => array(
@@ -73,7 +107,8 @@ function jobpass_joboffers_post_type() {
 			'supports' => array('title', 'editor', 'thumbnail'),
 			'has_archive' => true,
             'rewrite' => array('slug' => 'recrutement'),
-			'show_in_menu' => false
+			'show_in_menu' => false, 
+      'taxonomies' => $taxonomies
             
 		)
 	);
@@ -81,6 +116,50 @@ function jobpass_joboffers_post_type() {
 add_action('init', 'jobpass_joboffers_post_type');
 
 add_filter('single_template', 'jobpass_joboffer_template');
+
+
+
+// Ajoute les champs d'entrée personnalisés dans le formulaire de création/édition des catégories
+function jobpass_category_fields( $tag ) {
+  $organization_id = get_term_meta( $tag->term_id, 'organization_id', true );
+  $script_id = get_term_meta( $tag->term_id, 'script_id', true );
+  ?>
+<tr class="form-field">
+    <th scope="row" valign="top">
+        <label for="organization_id"><?php _e( 'Organization ID' ); ?></label>
+    </th>
+    <td>
+        <input type="text" name="organization_id" id="organization_id"
+            value="<?php echo esc_attr( $organization_id ); ?>">
+        <p class="description"><?php _e( 'Ajoutez l\'Organisation ID de votre entité' ); ?></p>
+    </td>
+</tr>
+<tr class="form-field">
+    <th scope="row" valign="top">
+        <label for="script_id"><?php _e( 'Script ID' ); ?></label>
+    </th>
+    <td>
+        <input type="text" name="script_id" id="script_id" value="<?php echo esc_attr( $script_id ); ?>">
+        <p class="description"><?php _e( 'Ajoutez le ScriptID de votre entité' ); ?></p>
+    </td>
+</tr>
+<?php
+}
+add_action( 'entite_edit_form_fields', 'jobpass_category_fields', 10, 2 );
+add_action( 'entite_add_form_fields', 'jobpass_category_fields', 10, 2 );
+
+// Enregistre les valeurs des champs d'entrée personnalisés
+function jobpass_save_category_fields( $term_id ) {
+  if ( isset( $_POST['organization_id'] ) ) {
+      update_term_meta( $term_id, 'organization_id', sanitize_text_field( $_POST['organization_id'] ) );
+  }
+  if ( isset( $_POST['script_id'] ) ) {
+      update_term_meta( $term_id, 'script_id', sanitize_text_field( $_POST['script_id'] ) );
+  }
+}
+add_action( 'entite_category', 'jobpass_save_category_fields', 10, 2 );
+add_action( 'entite_category', 'jobpass_save_category_fields', 10, 2 );
+
 
 function jobpass_joboffer_template($single) {
 
@@ -135,3 +214,33 @@ function jobpass_template_chooser($jobpass_template)
   return $jobpass_template;   
 }
 add_filter('template_include', 'jobpass_template_chooser');    
+
+
+function jobpass_plugin_settings() {
+  add_settings_section(
+      'jobpass_taxonomy_section',
+      'Options de la taxonomie',
+      'jobpass_taxonomy_section_callback',
+      'jobpass_plugin'
+  );
+
+  add_settings_field(
+      'jobpass_enable_taxonomy',
+      'Activer la taxonomie Entité',
+      'jobpass_enable_taxonomy_callback',
+      'jobpass_plugin',
+      'jobpass_taxonomy_section'
+  );
+
+  register_setting('jobpass_plugin', 'jobpass_enable_taxonomy');
+}
+add_action('admin_init', 'jobpass_plugin_settings');
+
+function jobpass_taxonomy_section_callback() {
+  echo 'Choisissez les options de la taxonomie pour le type "joboffers".';
+}
+
+function jobpass_enable_taxonomy_callback() {
+  $enable_taxonomy = get_option('jobpass_enable_taxonomy');
+  echo '<input type="checkbox" name="jobpass_enable_taxonomy" value="1" ' . checked(1, $enable_taxonomy, false) . ' />';
+}
