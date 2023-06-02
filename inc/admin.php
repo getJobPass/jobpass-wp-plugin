@@ -3,14 +3,14 @@ defined( 'ABSPATH' ) or die( 'Hack me not' );
 
 add_action( 'admin_menu', 'jobpass_settings' );
 function jobpass_settings() {
-	add_menu_page("Jobpass","Jobpass",'manage_options',"jobpass",'jobpass_config_page', plugin_dir_url( __FILE__ ) . 'images/icone-jobpass_square.jpg',5,);
+	add_menu_page("Jobpass","Jobpass",'manage_options',"jobpass",'jobpass_config_page', plugin_dir_url( __FILE__ ) . 'images/icone-jobpass_square.jpg',5);
 
 	add_submenu_page(
         'jobpass',
         'Toutes les offres', //page title
         'Toutes les offres d\'emploi', //menu title
         'manage_options', //capability,
-        'edit.php?post_type=joboffers',//menu slug
+        'edit.php?post_type=joboffers'//menu slug
         
     );
 	add_submenu_page(
@@ -18,7 +18,7 @@ function jobpass_settings() {
         'Ajouter une offre', //page title
         'Ajouter une offre d\'emploi', //menu title
         'manage_options', //capability,
-        'post-new.php?post_type=joboffers',//menu slug
+        'post-new.php?post_type=joboffers'//menu slug
         
     );
 	$enable_taxonomy = get_option('JobpassManyEntities'); 
@@ -30,7 +30,7 @@ if($enable_taxonomy) {
         'Entités', //page title
         'Entités', //menu title
         'manage_options', //capability,
-        'edit-tags.php?taxonomy=entite&post_type=joboffers',
+        'edit-tags.php?taxonomy=entite&post_type=joboffers'
     );
 }
 
@@ -43,15 +43,12 @@ function jobpass_config_page() {
 	echo jobpass_display_form();
 }
 
-function disable_inputs() {
-	if($enable_taxonomy === 0) {}
-}
 
 function jobpass_display_form() {
 
 	function if_entities() {
-		$enable_entity = get_option('JobpassManyEntities' === 0);
-		if(!$enable_entity) {
+		$enable_entity = get_option('JobpassManyEntities');
+		if(!$enable_entity === 0) {
 			return 'prout';
 		}
 	}
